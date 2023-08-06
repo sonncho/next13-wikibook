@@ -1,0 +1,42 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+html {
+  /* font-size: 62.5%; // 1rem = 10px; 10px/16px = 62.5% */
+  height: 100vh;
+}
+body {
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+a {
+  &:link,
+  &:visited,
+  &:hover,
+  &:active {
+    color: inherit;
+    text-decoration: inherit;
+  }
+}
+input,
+select,
+button {
+  background: none;
+  border: none;
+  font-size: inherit;
+  color: inherit;
+  &:focus {
+    outline: none;
+  }
+  &:disabled {
+    cursor: not-allowed;
+  }
+}
+a,
+button {
+  cursor: pointer;
+}
+pre {
+  white-space: pre-line;
+}
