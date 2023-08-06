@@ -9,6 +9,7 @@ export type ColorTypes =
   | 'warning'
   | 'info';
 export type PaletteMode = 'light' | 'dark';
+export type BreakPointsTypes = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 
 export interface IPaletteCode {
   light: string;
@@ -50,6 +51,33 @@ export interface IPalette {
     [key in string]: string;
   };
 }
+export type Shadows = [
+  'none',
+  string,
+  string,
+  string,
+  string,
+  string,
+  string,
+  string,
+  string,
+  string,
+  string,
+  string,
+  string,
+  string,
+  string,
+  string,
+  string,
+  string,
+  string,
+  string,
+  string,
+  string,
+  string,
+  string,
+  string,
+];
 
 // we'll use a very simple theme with  palette and colors
 declare module 'styled-components' {
@@ -59,5 +87,14 @@ declare module 'styled-components' {
       borderRadius: number;
     };
     spacing: (factor: number) => string;
+    breakpoints: {
+      values: {
+        [key in BreakPointsTypes]: number;
+      };
+    };
+    shadows: Shadows;
+    typography: {
+      fontFamily: string;
+    };
   }
 }

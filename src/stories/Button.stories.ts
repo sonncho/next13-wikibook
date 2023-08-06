@@ -22,5 +22,6 @@ export const Primary: Story = {
   args: {
     // primary: true,
     children: 'Button',
+    color: 'primary',
   },
 };
