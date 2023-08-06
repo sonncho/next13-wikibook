@@ -11,7 +11,6 @@ interface IProps {
 const ThemeComponent = (props: IProps) => {
   const { children } = props;
   const theme = themeOptions('light');
-  console.log(theme);
 
   return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
 };

@@ -1,6 +1,13 @@
 // styled.d.ts
 import 'styled-components';
 
+export type ColorTypes =
+  | 'primary'
+  | 'secondary'
+  | 'success'
+  | 'error'
+  | 'warning'
+  | 'info';
 export type PaletteMode = 'light' | 'dark';
 
 export interface IPaletteCode {

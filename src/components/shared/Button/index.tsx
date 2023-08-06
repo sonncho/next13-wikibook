@@ -2,9 +2,10 @@
 
 import { ButtonHTMLAttributes } from 'react';
 import { styled } from 'styled-components';
+import { ColorTypes } from '~/@core/themes/types';
 
 const ButtonStyle = styled.button<ButtonProps>`
-  background-color: violet;
+  background-color: ${({ theme }) => theme.palette.primary.main};
   border: 1px solid violet;
   font-size: 14px;
   box-shadow: none;
@@ -15,11 +16,11 @@ const ButtonStyle = styled.button<ButtonProps>`
 `;
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  color?: 'primary' | 'error' | 'info' | 'danger';
+  color?: ColorTypes;
   children: React.ReactNode;
 }
 
-const Button = ({ color, children, ...rest }: ButtonProps) => {
+const Button = ({ color = 'primary', children, ...rest }: ButtonProps) => {
   return (
     <ButtonStyle color={color} {...rest}>
       {children}

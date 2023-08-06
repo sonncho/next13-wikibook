@@ -1,7 +1,8 @@
 import type { Preview } from '@storybook/react';
 
 import { withThemeFromJSXProvider } from '@storybook/addon-styling';
-import { createGlobalStyle, ThemeProvider } from 'styled-components';
+import { ThemeProvider } from 'styled-components';
+import themeOptions from '../src/@core/themes/themeOptions';
 import GlobalStyles from '../src/@core/styles/globalStyles';
 
 /* TODO: update import for your custom theme configurations */
@@ -22,12 +23,12 @@ const preview: Preview = {
     // Adds global styles and theme switching support.
     withThemeFromJSXProvider({
       /* Uncomment for theme switching support */
-      // themes: {
-      //   light: lightTheme,
-      //   dark: darkTheme,
-      // }
-      // defaultTheme: 'light',
-      // Provider: ThemeProvider,
+      themes: {
+        light: themeOptions('light'),
+        dark: themeOptions('dark'),
+      },
+      defaultTheme: 'light',
+      Provider: ThemeProvider,
       GlobalStyles,
     }),
   ],
