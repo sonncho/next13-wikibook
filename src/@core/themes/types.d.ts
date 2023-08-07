@@ -86,7 +86,7 @@ declare module 'styled-components' {
     shape: {
       borderRadius: number;
     };
-    spacing: (factor: number) => string;
+    spacing: (...args: number[]) => string;
     breakpoints: {
       values: {
         [key in BreakPointsTypes]: number;

@@ -30,6 +30,8 @@ const themeOptions = (mode: PaletteMode): DefaultTheme => {
     shadows: shadows(mode),
   };
 
+  console.log(themeConfig);
+
   return themeConfig;
 };
 
