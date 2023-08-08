@@ -23,7 +23,7 @@ const themeOptions = (mode: PaletteMode): DefaultTheme => {
       fontFamily: roboto.style.fontFamily,
     },
     shape: {
-      borderRadius: 8,
+      borderRadius: 6,
     },
     ...spacing,
     breakpoints: breakpoints(),

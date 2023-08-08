@@ -33,9 +33,17 @@ const Button = ({
       className={`GnButton GnButton-${variant} GnButton-${size}`}
       {...rest}
     >
-      {startIcon ?? ''}
+      {startIcon && (
+        <span className={`GnButton-startIcon GnSvgIcon GnSvgIcon-${size}`}>
+          {startIcon}
+        </span>
+      )}
       {children}
-      {endIcon ?? ''}
+      {endIcon && (
+        <span className={`GnButton-endIcon GnSvgIcon GnSvgIcon-${size}`}>
+          {endIcon}
+        </span>
+      )}
     </StyledButton>
   );
 };
