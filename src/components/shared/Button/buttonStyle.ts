@@ -108,6 +108,11 @@ const StyledButton = styled.button<StyledButtonProps>`
           &:hover {
             background-color: ${hexToRGBA(theme.palette[$color].main, 0.04)};
           }
+          &:disabled {
+            color: ${theme.palette.action.disabled};
+            cursor: default;
+            pointer-events: none;
+          }
         `;
       }
     }
