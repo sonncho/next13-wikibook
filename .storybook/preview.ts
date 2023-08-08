@@ -8,8 +8,8 @@ import GlobalStyles from '../src/@core/styles/globalStyles';
 /* TODO: update import for your custom theme configurations */
 // import { lightTheme, darkTheme } from '../path/to/themes';
 
-const lightTheme = themeOptions('light');
-const darkTheme = themeOptions('dark');
+const light = themeOptions('light');
+const dark = themeOptions('dark');
 
 const preview: Preview = {
   parameters: {
@@ -27,8 +27,8 @@ const preview: Preview = {
     withThemeFromJSXProvider({
       /* Uncomment for theme switching support */
       themes: {
-        light: lightTheme,
-        dark: darkTheme,
+        light,
+        dark,
       },
       defaultTheme: 'light',
       Provider: ThemeProvider,

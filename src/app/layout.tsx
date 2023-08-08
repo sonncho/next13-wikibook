@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import ThemeComponent from '~/@core/themes/ThemeComponent';
 import StyledComponentsRegistry from '~/@core/themes/themeRegistry';
+import ReactQueryComponent from '~/libs/react-query/ReactQueryComponent';
 // import './globals.css';
 
 const inter = Inter({ subsets: ['latin'] });
@@ -19,9 +20,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <StyledComponentsRegistry>
-          <ThemeComponent>{children}</ThemeComponent>
-        </StyledComponentsRegistry>
+        <ReactQueryComponent>
+          <StyledComponentsRegistry>
+            <ThemeComponent>{children}</ThemeComponent>
+          </StyledComponentsRegistry>
+        </ReactQueryComponent>
       </body>
     </html>
   );
