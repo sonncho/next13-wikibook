@@ -10,9 +10,11 @@ interface IProps {
 
 const ThemeComponent = (props: IProps) => {
   const { children } = props;
-  const theme = themeOptions('light');
+  const coreThemeConfig = themeOptions('light');
 
-  return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
+  // const theme = createTheme(coreThemeConfig);
+
+  return <ThemeProvider theme={coreThemeConfig}>{children}</ThemeProvider>;
 };
 
 export default ThemeComponent;

@@ -22,6 +22,17 @@ const nextConfig = {
     }
     return compilerConfig;
   })(),
+  // 교차출처 리소스 공유에서의 쿠키 전송을 피하기위해 proxy설정
+  async rewrites() {
+    return [
+      {
+        // ex. /api/proxy
+        source: `${process.env.NEXT_PUBLIC_API_BASE_PATH}/:match*`,
+        // ex. http://localhost:8000
+        destination: `${process.env.API_BASE_URL}/:match*`,
+      },
+    ];
+  },
 };
 
 module.exports = nextConfig;
