@@ -1,5 +1,9 @@
-//* Breakpoint Types
-// export type Breakpoint = 'xs' | 'sm' | 'md' | 'lg' | 'xl'; // literal type
+/* eslint-disable @typescript-eslint/no-explicit-any */
+//* Shape
+export interface Shape {
+  borderRadius: number;
+}
+export type ShapeOptions = Partial<Shape>;
 
 export interface BreakpointOverrides {}
 
@@ -38,6 +42,67 @@ export interface BreakpointsOptions extends Partial<Breakpoints> {
   unit?: string | undefined;
 }
 
+//* z-index Types
+export interface ZIndex {
+  mobileStepper: number;
+  speedDial: number;
+  appBar: number;
+  drawer: number;
+  modal: number;
+  snackbar: number;
+  tooltip: number;
+  fab: number;
+}
+
+export type ZIndexOptions = Partial<ZIndex>;
+
 //* Spacing Ttypes
+export type SpacingOptions =
+  | number
+  | Spacing
+  | ((abs: number) => number | string)
+  | ((abs: number | string) => number | string)
+  | ReadonlyArray<string | number>;
+export type SpacingArgument = number | string;
+export interface Spacing {
+  (): string;
+  (value: number): string;
+  (topBottom: SpacingArgument, rightLeft: SpacingArgument): string;
+  (
+    top: SpacingArgument,
+    rightLeft: SpacingArgument,
+    bottom: SpacingArgument
+  ): string;
+  (
+    top: SpacingArgument,
+    right: SpacingArgument,
+    bottom: SpacingArgument,
+    left: SpacingArgument
+  ): string;
+}
+export default function createSpacing(spacingInput?: SpacingOptions): Spacing;
 
 //* CreateTheme Types
+export interface ThemeOptions {
+  shape?: ShapeOptions;
+  breakpoints?: BreakpointsOptions;
+  direction?: Direction;
+  palette?: Record<string, any>;
+  shadows?: unknown;
+  spacing?: SpacingOptions;
+  transitions?: unknown;
+  typography?: unknown;
+  zIndex?: Record<string, number>;
+}
+export interface Theme {
+  shape: Shape;
+  breakpoints: Breakpoints;
+  direction: Direction;
+  palette: Record<string, any> & { mode: 'light' | 'dark' };
+  shadows?: unknown;
+  spacing: Spacing;
+  transitions?: unknown;
+  mixins?: unknown;
+  typography?: unknown;
+  zIndex?: unknown;
+}

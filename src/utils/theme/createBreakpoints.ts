@@ -13,17 +13,11 @@ const sortBreakpointsValues = (values: { [key in Breakpoint]: number }) => {
     (breakpoint1, breakpoint2) => breakpoint1.val - breakpoint2.val
   );
 
-  console.log(breakpointsAsArray);
-
   const reduceResult = breakpointsAsArray.reduce((acc, obj) => {
-    console.log(acc);
-    return (
-      {},
-      acc,
-      {
-        [obj.key]: obj.val,
-      }
-    );
+    return {
+      ...acc,
+      [obj.key]: obj.val,
+    };
   }, {});
 
   return reduceResult;

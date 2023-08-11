@@ -1,5 +1,6 @@
 // styled.d.ts
 import 'styled-components';
+import { Breakpoints } from '~/types/theme';
 
 export type ColorTypes =
   | 'primary'
@@ -9,7 +10,6 @@ export type ColorTypes =
   | 'warning'
   | 'info';
 export type PaletteMode = 'light' | 'dark';
-export type BreakPointsTypes = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 
 export interface IPaletteCode {
   light: string;
@@ -87,11 +87,7 @@ declare module 'styled-components' {
       borderRadius: number;
     };
     spacing: (...args: number[]) => string;
-    breakpoints: {
-      values: {
-        [key in BreakPointsTypes]: number;
-      };
-    };
+    breakpoints: Breakpoints;
     shadows: Shadows;
     typography: {
       fontFamily: string;

@@ -8,6 +8,7 @@ import shadows from './shadows';
 import spacing from './spacing';
 
 import { PaletteMode } from './types';
+import createBreakpoints from '~/utils/theme/createBreakpoints';
 
 export const roboto = Roboto({
   weight: ['300', '400', '500', '700'],
@@ -26,11 +27,9 @@ const themeOptions = (mode: PaletteMode): DefaultTheme => {
       borderRadius: 6,
     },
     ...spacing,
-    breakpoints: breakpoints(),
+    breakpoints: createBreakpoints(breakpoints()),
     shadows: shadows(mode),
   };
-
-  console.log(themeConfig);
 
   return themeConfig;
 };

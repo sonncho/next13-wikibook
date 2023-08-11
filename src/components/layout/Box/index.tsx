@@ -7,6 +7,11 @@ const StyledBox = styled.div`
   width: 50px;
   height: 50px;
   background-color: ${({ theme }) => theme.palette.primary.main};
+  ${({ theme }) => css`
+    ${theme.breakpoints.up('md')} {
+      width: 900px;
+    }
+  `};
 `;
 
 const Box = () => {
