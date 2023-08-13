@@ -1,4 +1,8 @@
-import { Breakpoint, Breakpoints, BreakpointsOptions } from '~/types/theme';
+import {
+  Breakpoint,
+  Breakpoints,
+  BreakpointsOptions,
+} from '~/types/theme/breakpoints';
 
 const sortBreakpointsValues = (values: { [key in Breakpoint]: number }) => {
   const breakpointsAsArray =
@@ -7,8 +11,6 @@ const sortBreakpointsValues = (values: { [key in Breakpoint]: number }) => {
       val: values[key as Breakpoint],
     })) || [];
   // Sort in ascending order
-  console.log(breakpointsAsArray);
-
   breakpointsAsArray.sort(
     (breakpoint1, breakpoint2) => breakpoint1.val - breakpoint2.val
   );
@@ -31,7 +33,6 @@ function createBreakpoints(breakpoints: BreakpointsOptions): Breakpoints {
   } = breakpoints;
 
   const sortedValues = sortBreakpointsValues(values);
-  console.log('sortedValues', sortedValues);
 
   const keys = Object.keys(sortedValues);
 
@@ -57,7 +58,6 @@ function createBreakpoints(breakpoints: BreakpointsOptions): Breakpoints {
     return up(key);
   }
   function not(key: Breakpoint) {
-    // handle first and last key separately, for better readability
     const keyIndex = keys.indexOf(key);
     if (keyIndex === 0) {
       return up(keys[1]);

@@ -1,5 +1,6 @@
 import { BiBell, BiArchiveIn } from 'react-icons/bi';
-import Button from '~/components/Button';
+import Button from '~/components/atoms/Button';
+import Typography from '~/components/atoms/Typography';
 import Box from '~/components/layout/Box';
 
 export default function Home() {
@@ -35,6 +36,9 @@ export default function Home() {
       </div>
 
       <Box />
+
+      <Typography variant="subtitle1">Subtitle</Typography>
+      <Typography variant="h2">h2</Typography>
     </main>
   );
 }

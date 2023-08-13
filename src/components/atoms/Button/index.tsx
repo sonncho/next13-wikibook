@@ -2,10 +2,16 @@
 
 import { ButtonHTMLAttributes } from 'react';
 import StyledButton from './buttonStyle';
-import { ColorTypes } from '~/@core/themes/types';
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  color?: ColorTypes;
+  color?:
+    | 'primary'
+    | 'secondary'
+    | 'error'
+    | 'warning'
+    | 'info'
+    | 'success'
+    | 'text';
   size?: 'large' | 'medium' | 'small';
   variant?: 'contained' | 'outlined' | 'text';
   startIcon?: JSX.Element;

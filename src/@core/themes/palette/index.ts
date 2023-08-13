@@ -1,6 +1,6 @@
-import { PaletteMode } from '../types';
+import { PaletteOptions } from '~/types/theme/palette';
 
-const DefaultPalette = (mode: PaletteMode) => {
+const DefaultPalette = (mode: 'light' | 'dark'): PaletteOptions => {
   const lightColor = '58, 53, 65';
   const darkColor = '231, 227, 252';
 

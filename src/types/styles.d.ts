@@ -134,3 +134,17 @@ export type CSSPropertyGridAutoFlow =
   | (string & {});
 
 export type CSSPropertyGridArea = CSSPropertyGlobals | GridLine | (string & {});
+
+export type SXProps = Array<func | object | bool> | func | object;
+
+export type SpaceKeys =
+  | 'm' // margin
+  | 'mt' // margin-top
+  | 'ml' // margin-left
+  | 'mb' // margin-bottom
+  | 'mr' // margin-right
+  | 'p' // padding
+  | 'pt' //padding-top
+  | 'pl' // padding-left
+  | 'pb' // padding-bottom
+  | 'pr'; // paddring-right

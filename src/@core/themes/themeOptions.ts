@@ -1,14 +1,11 @@
 // eslint-disable-next-line import/no-unresolved
 import { Roboto } from 'next/font/google';
-import { DefaultTheme } from 'styled-components';
 
 import breakpoints from './breakpoints';
 import palette from './palette';
 import shadows from './shadows';
 import spacing from './spacing';
-
-import { PaletteMode } from './types';
-import createBreakpoints from '~/utils/theme/createBreakpoints';
+import { PaletteMode, ThemeOptions } from '~/types/theme';
 
 export const roboto = Roboto({
   weight: ['300', '400', '500', '700'],
@@ -17,7 +14,7 @@ export const roboto = Roboto({
   fallback: ['Helvetica', 'Arial', 'sans-serif'],
 });
 
-const themeOptions = (mode: PaletteMode): DefaultTheme => {
+const themeOptions = (mode: PaletteMode): ThemeOptions => {
   const themeConfig = {
     palette: palette(mode),
     typography: {
@@ -27,7 +24,7 @@ const themeOptions = (mode: PaletteMode): DefaultTheme => {
       borderRadius: 6,
     },
     ...spacing,
-    breakpoints: createBreakpoints(breakpoints()),
+    breakpoints: breakpoints(),
     shadows: shadows(mode),
   };
 

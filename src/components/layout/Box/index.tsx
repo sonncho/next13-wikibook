@@ -1,9 +1,13 @@
 'use client';
 
-import React from 'react';
 import { css, styled } from 'styled-components';
 
-const StyledBox = styled.div`
+interface BoxProps {
+  component?: HTMLElementTagNameMap;
+  children?: React.ReactNode;
+}
+
+const StyledBox = styled.div<BoxProps>`
   width: 50px;
   height: 50px;
   background-color: ${({ theme }) => theme.palette.primary.main};
@@ -14,8 +18,9 @@ const StyledBox = styled.div`
   `};
 `;
 
-const Box = () => {
-  return <StyledBox>Box</StyledBox>;
+const Box = (props: BoxProps) => {
+  const { children, ...rest } = props;
+  return <StyledBox {...rest}>{children}</StyledBox>;
 };
 
 export default Box;
