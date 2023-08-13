@@ -5,7 +5,7 @@ import { ThemeProvider } from 'styled-components';
 import themeOptions from './themeOptions';
 
 import typography from './typography';
-import createTheme from '~/utils/createTheme';
+import createTheme from '~/utils/theme/createTheme';
 
 interface IProps {
   children: ReactNode;

@@ -1,5 +1,5 @@
 import { css, styled } from 'styled-components';
-import { ColorTypes } from '~/@core/themes/types';
+import { ColorTypes } from '~/types/theme';
 import { hexToRGBA, pxToRem } from '~/utils/filters';
 
 interface StyledButtonProps {

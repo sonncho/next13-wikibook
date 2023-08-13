@@ -1,5 +1,5 @@
 import merge from 'lodash/merge';
-import { pxToRem } from './filters';
+import { pxToRem } from '../filters';
 import { PaletteOptions } from '~/types/theme/palette';
 import { Typography, TypographyOptions } from '~/types/theme/typography';
 

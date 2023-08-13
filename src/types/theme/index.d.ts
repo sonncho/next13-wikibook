@@ -9,6 +9,15 @@ import { Typography, TypographyOptions } from './typography';
 
 export type PaletteMode = 'light' | 'dark';
 
+export type ColorTypes =
+  | 'primary'
+  | 'secondary'
+  | 'success'
+  | 'text'
+  | 'warning'
+  | 'info'
+  | 'error';
+
 export interface Color {
   50: string;
   100: string;

@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/no-unresolved
 import { Roboto } from 'next/font/google';
 
 import breakpoints from './breakpoints';

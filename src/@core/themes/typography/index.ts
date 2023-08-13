@@ -1,6 +1,3 @@
-// ** Theme Type Import
-// import { DefaultTheme } from 'styled-components';
-
 import { Theme } from '~/types/theme';
 
 const Typography = (theme: Theme) => {

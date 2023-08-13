@@ -1,6 +1,6 @@
-import { PaletteOptions } from '~/types/theme/palette';
+import { Palette } from '~/types/theme/palette';
 
-const DefaultPalette = (mode: 'light' | 'dark'): PaletteOptions => {
+const DefaultPalette = (mode: 'light' | 'dark'): Palette => {
   const lightColor = '58, 53, 65';
   const darkColor = '231, 227, 252';
 
@@ -85,6 +85,11 @@ const DefaultPalette = (mode: 'light' | 'dark'): PaletteOptions => {
       disabled: `rgba(${mainColor}, 0.3)`,
       disabledBackground: `rgba(${mainColor}, 0.18)`,
       focus: `rgba(${mainColor}, 0.12)`,
+      hoverOpacity: 0.04,
+      activatedOpacity: 0.12,
+      disabledOpacity: 0.38,
+      selectedOpacity: 0.08,
+      focusOpacity: 0.12,
     },
   };
 };

@@ -1,7 +1,7 @@
-import { DefaultTheme } from 'styled-components';
-import { PaletteMode } from '../types';
+import { PaletteMode } from '~/types/theme';
+import { Shadows } from '~/types/theme/shadow';
 
-const Shadows = (mode: PaletteMode): DefaultTheme['shadows'] => {
+const Shadows = (mode: PaletteMode): Shadows => {
   if (mode === 'light') {
     return [
       'none',

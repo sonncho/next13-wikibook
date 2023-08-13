@@ -2,11 +2,11 @@
 
 import React, { ReactNode } from 'react';
 import { css, styled } from 'styled-components';
-import { TypographyVariant } from '~/types/styles';
+import { Variant } from '~/types/theme/typography';
 
 interface TypographyProps {
   children: ReactNode;
-  variant?: TypographyVariant;
+  variant: Variant;
 }
 
 const defaultVariantMapping = {
@@ -21,20 +21,23 @@ const defaultVariantMapping = {
   body1: 'p',
   body2: 'p',
   inherit: 'p',
+  caption: 'p',
+  button: 'p',
+  overline: 'p',
 };
 
 const TypographyRoot = css``;
 
-const GNTypography = styled.span<TypographyProps>``;
+const GNTypography = styled.p<TypographyProps>`
+  ${TypographyRoot};
+`;
 
 const Typography = (props: TypographyProps) => {
   const { children, variant, ...rest } = props;
-  const variantMapping = defaultVariantMapping[variant as TypographyVariant];
-
-  console.log(variantMapping);
+  const variantMapping = defaultVariantMapping[variant];
 
   return (
-    <GNTypography as={variantMapping} {...rest}>
+    <GNTypography as={variantMapping} variant={variant} {...rest}>
       {children}
     </GNTypography>
   );

@@ -42,7 +42,6 @@ export interface SimplePaletteColorOptions {
   dark?: string;
   contrastText?: string;
 }
-
 export interface PaletteColor {
   light: string;
   main: string;
@@ -73,26 +72,6 @@ export interface PaletteAugmentColorOptions {
   lightShade?: number | string;
   darkShade?: number | string;
   name?: number | string;
-}
-
-export interface Palette {
-  common: CommonColors;
-  mode: PaletteMode;
-  contrastThreshold: number;
-  tonalOffset: PaletteTonalOffset;
-  primary: PaletteColor;
-  secondary: PaletteColor;
-  error: PaletteColor;
-  warning: PaletteColor;
-  info: PaletteColor;
-  success: PaletteColor;
-  grey: Color;
-  text: TypeText;
-  divider: TypeDivider;
-  action: TypeAction;
-  background: TypeBackground;
-  getContrastText: (background: string) => string;
-  augmentColor: (options: PaletteAugmentColorOptions) => PaletteColor;
 }
 
 export interface Channels {
@@ -129,4 +108,21 @@ export interface PaletteOptions {
   action?: Partial<TypeAction>;
   background?: Partial<TypeBackground>;
   getContrastText?: (background: string) => string;
+}
+
+export interface Palette {
+  customColors?: CustomColorsOptions;
+  common: CommonColors;
+  mode: PaletteMode;
+  primary: PaletteColor;
+  secondary: PaletteColor;
+  error: PaletteColor;
+  warning: PaletteColor;
+  info: PaletteColor;
+  success: PaletteColor;
+  grey: Color;
+  text: TypeText;
+  divider: TypeDivider;
+  action: TypeAction;
+  background: TypeBackground;
 }
