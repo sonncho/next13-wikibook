@@ -20,9 +20,9 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <ReactQueryComponent>
-          <ThemeComponent>
-            <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
-          </ThemeComponent>
+          <StyledComponentsRegistry>
+            <ThemeComponent>{children}</ThemeComponent>
+          </StyledComponentsRegistry>
         </ReactQueryComponent>
       </body>
     </html>

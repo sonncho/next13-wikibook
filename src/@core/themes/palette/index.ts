@@ -1,6 +1,4 @@
-import { Palette } from '~/types/theme/palette';
-
-const DefaultPalette = (mode: 'light' | 'dark'): Palette => {
+const DefaultPalette = (mode: 'light' | 'dark') => {
   const lightColor = '58, 53, 65';
   const darkColor = '231, 227, 252';
 

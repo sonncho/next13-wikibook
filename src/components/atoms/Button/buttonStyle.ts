@@ -1,5 +1,4 @@
-/* eslint-disable @typescript-eslint/ban-types */
-import { css, styled } from 'styled-components';
+import styled, { css } from 'styled-components';
 import { hexToRGBA, pxToRem } from '~/utils/filters';
 
 export type ColorTypes =
@@ -8,8 +7,7 @@ export type ColorTypes =
   | 'success'
   | 'warning'
   | 'info'
-  | 'error'
-  | (string & {});
+  | 'error';
 
 interface StyledButtonProps {
   $color: ColorTypes;

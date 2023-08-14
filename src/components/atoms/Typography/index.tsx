@@ -1,7 +1,8 @@
 'use client';
 
 import React, { ReactNode } from 'react';
-import { css, styled } from 'styled-components';
+import styled from 'styled-components';
+
 import { Variant } from '~/types/theme/typography';
 
 interface TypographyProps {
@@ -30,11 +31,9 @@ const defaultVariantMapping = {
   overline: 'p',
 };
 
-const TypographyRoot = css``;
+// const TypographyRoot = css``;
 
-const GNTypography = styled.p<TypographyStyle>`
-  ${TypographyRoot};
-`;
+const GNTypography = styled('p')<TypographyStyle>``;
 
 const Typography = (props: TypographyProps) => {
   const { children, variant, ...rest } = props;

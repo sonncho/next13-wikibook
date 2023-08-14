@@ -26,7 +26,8 @@
   "rules": {
     "react/react-in-jsx-scope": "off",
     "react/jsx-props-no-spreading": "off",
-    "import/order": [2, { "alphabetize": { "order": "asc" } }]
+    "import/order": [2, { "alphabetize": { "order": "asc" } }],
+    "import/no-named-as-default": "off"
   },
   "settings": {
     "react": {

@@ -90,6 +90,11 @@ export type CustomColorsOptions = {
   tableHeaderBg?: string;
 };
 
+export type CustomColors = {
+  main: string;
+  tableHeaderBg: string;
+};
+
 export interface PaletteOptions {
   customColors?: CustomColorsOptions;
   primary?: PaletteColorOptions;
@@ -110,7 +115,7 @@ export interface PaletteOptions {
 }
 
 export interface Palette {
-  customColors?: CustomColorsOptions;
+  customColors: CustomColors;
   common: CommonColors;
   mode: PaletteMode;
   primary: PaletteColor;
