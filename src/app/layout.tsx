@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import ThemeComponent from '~/@core/themes/ThemeComponent';
 import StyledComponentsRegistry from '~/@core/themes/themeRegistry';
 import ReactQueryComponent from '~/libs/react-query/ReactQueryComponent';
-// import './globals.css';
+import './globals.css';
 
 // const inter = Inter({ subsets: ['latin'] });
 

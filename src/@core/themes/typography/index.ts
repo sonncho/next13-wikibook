@@ -1,8 +1,6 @@
 import { Theme } from '~/types/theme';
 
 const Typography = (theme: Theme) => {
-  console.log(theme);
-
   return {
     h1: {
       fontWeight: 500,

@@ -1,7 +1,7 @@
 import { PaletteMode } from '~/types/theme';
-import { Shadows } from '~/types/theme/shadow';
+import { Shadows as SystemShadows } from '~/types/theme/shadow';
 
-const Shadows = (mode: PaletteMode): Shadows => {
+const Shadows = (mode: PaletteMode): SystemShadows => {
   if (mode === 'light') {
     return [
       'none',

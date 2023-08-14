@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { ZIndex, ZIndexOptions } from './ZIndex';
 import { Breakpoints, BreakpointsOptions } from './breakpoints';
@@ -8,15 +9,6 @@ import { Spacing, SpacingOptions } from './spacing';
 import { Typography, TypographyOptions } from './typography';
 
 export type PaletteMode = 'light' | 'dark';
-
-export type ColorTypes =
-  | 'primary'
-  | 'secondary'
-  | 'success'
-  | 'text'
-  | 'warning'
-  | 'info'
-  | 'error';
 
 export interface Color {
   50: string;

@@ -1,11 +1,21 @@
+/* eslint-disable @typescript-eslint/ban-types */
 import { css, styled } from 'styled-components';
-import { ColorTypes } from '~/types/theme';
 import { hexToRGBA, pxToRem } from '~/utils/filters';
+
+export type ColorTypes =
+  | 'primary'
+  | 'secondary'
+  | 'success'
+  | 'warning'
+  | 'info'
+  | 'error'
+  | (string & {});
 
 interface StyledButtonProps {
   $color: ColorTypes;
-  $size?: 'large' | 'medium' | 'small';
-  $variant?: 'contained' | 'outlined' | 'text';
+  // $color: 'primary' | 'text' | 'error';
+  $size: 'large' | 'medium' | 'small';
+  $variant: 'contained' | 'outlined' | 'text';
   disabled?: boolean;
 }
 
@@ -30,6 +40,7 @@ const getFontSize = ({ $size = 'medium' }) => {
 };
 
 const StyledButton = styled.button<StyledButtonProps>`
+  // Root Button Style
   outline: 0;
   border: 0;
   border-radius: ${({ theme }) => `${theme.shape.borderRadius}px`};
@@ -44,7 +55,6 @@ const StyledButton = styled.button<StyledButtonProps>`
   font-weight: 500;
   letter-spacing: 0.3px;
   line-height: 1.6;
-  /* min-width: 64px; */
   transition:
     background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
     box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
@@ -70,6 +80,7 @@ const StyledButton = styled.button<StyledButtonProps>`
 
   ${(props) => {
     const { $variant, $color, theme } = props;
+
     switch ($variant) {
       case 'contained': {
         return css`

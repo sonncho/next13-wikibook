@@ -35,7 +35,10 @@ export default function Home() {
         </Button>
       </div>
 
-      <Box />
+      <Box width={400} height={400}>
+        Box야
+      </Box>
+      <Box m={3}>Box야</Box>
 
       <Typography variant="subtitle1">Subtitle</Typography>
       <Typography variant="h2">h2</Typography>

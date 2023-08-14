@@ -18,7 +18,8 @@ const ThemeComponent = (props: IProps) => {
   let theme = createTheme(coreTheme);
 
   theme = createTheme(theme, { typography: { ...typography(theme) } });
-  console.log(theme);
+
+  console.log('ThemeComponent.tsx ----------', theme);
 
   return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
 };

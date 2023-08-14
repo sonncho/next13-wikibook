@@ -5,7 +5,7 @@
  * CSS 속성값을 breakpoint별로 설정
  * T는 css 속성값의 타입
  */
-export type ResponsiveProps<T> = {
+export type ResponsiveProp<T> = {
   // base?: T;
   xs?: T; // extra-small: 0px
   sm?: T; // small: 600px;
@@ -14,7 +14,7 @@ export type ResponsiveProps<T> = {
   xl?: T; // extra-large: 1536px;
 };
 
-export type Responsive<T> = T | ResponsiveProps<T>;
+export type Responsive<T> = T | ResponsiveProp<T>;
 
 /**
  * Flex

@@ -9,6 +9,10 @@ interface TypographyProps {
   variant: Variant;
 }
 
+interface TypographyStyle {
+  $variant: Variant;
+}
+
 const defaultVariantMapping = {
   h1: 'h1',
   h2: 'h2',
@@ -28,7 +32,7 @@ const defaultVariantMapping = {
 
 const TypographyRoot = css``;
 
-const GNTypography = styled.p<TypographyProps>`
+const GNTypography = styled.p<TypographyStyle>`
   ${TypographyRoot};
 `;
 
@@ -37,7 +41,7 @@ const Typography = (props: TypographyProps) => {
   const variantMapping = defaultVariantMapping[variant];
 
   return (
-    <GNTypography as={variantMapping} variant={variant} {...rest}>
+    <GNTypography as={variantMapping} $variant={variant} {...rest}>
       {children}
     </GNTypography>
   );

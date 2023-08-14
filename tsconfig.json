@@ -24,6 +24,14 @@
       "~/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/libs/react-query/ReactQueryComponenttsx"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts"
+    // "src/libs/react-query/ReactQueryComponenttsx",
+    // "src/utils/theme/createBreakpoints.js",
+    // "src/@core/themes/styled.d.ts"
+  ],
   "exclude": ["node_modules"]
 }

@@ -107,7 +107,6 @@ export interface PaletteOptions {
   divider?: string;
   action?: Partial<TypeAction>;
   background?: Partial<TypeBackground>;
-  getContrastText?: (background: string) => string;
 }
 
 export interface Palette {
@@ -120,9 +119,12 @@ export interface Palette {
   warning: PaletteColor;
   info: PaletteColor;
   success: PaletteColor;
-  grey: Color;
+  [key: string]: PaletteColor; // Index Signature
   text: TypeText;
+  grey: Color;
   divider: TypeDivider;
   action: TypeAction;
   background: TypeBackground;
 }
+
+export type PaletteKey = keyof Palette;

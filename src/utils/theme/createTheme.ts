@@ -28,8 +28,6 @@ function createTheme(options: ThemeOptions = {}, ...args: object[]): Theme {
   });
 
   args.reduce((acc, argument) => merge(acc, argument), gnTheme);
-  console.log('-------gnTheme');
-  console.log(gnTheme);
 
   return gnTheme as Theme;
 }
