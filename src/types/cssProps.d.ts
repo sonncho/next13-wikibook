@@ -6,7 +6,7 @@
  * T는 css 속성값의 타입
  */
 export type ResponsiveProp<T> = {
-  // base?: T;
+  base?: T;
   xs?: T; // extra-small: 0px
   sm?: T; // small: 600px;
   md?: T; // medium: 900px;

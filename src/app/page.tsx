@@ -35,7 +35,7 @@ export default function Home() {
         </Button>
       </div>
 
-      <Box width={400} height={400}>
+      <Box width={{ sm: 80, md: 100 }} height={400}>
         Box야
       </Box>
       <Box m={3}>Box야</Box>

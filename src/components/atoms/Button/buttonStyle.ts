@@ -1,16 +1,9 @@
 import styled, { css } from 'styled-components';
+import { ColorKeys } from '~/types/theme';
 import { hexToRGBA, pxToRem } from '~/utils/filters';
 
-export type ColorTypes =
-  | 'primary'
-  | 'secondary'
-  | 'success'
-  | 'warning'
-  | 'info'
-  | 'error';
-
 interface StyledButtonProps {
-  $color: ColorTypes;
+  $color: ColorKeys;
   // $color: 'primary' | 'text' | 'error';
   $size: 'large' | 'medium' | 'small';
   $variant: 'contained' | 'outlined' | 'text';
