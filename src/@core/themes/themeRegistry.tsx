@@ -21,7 +21,7 @@ export default function StyledComponentsRegistry({
 
   return (
     <StyleSheetManager
-      //enableVendorPrefixes: 자동접두사
+      enableVendorPrefixes
       // shouldForwardProp={(propName, elementToBeRendered) => {
       //   return typeof elementToBeRendered === 'string'
       //     ? isPropValid(propName)
