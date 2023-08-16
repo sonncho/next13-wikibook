@@ -4,7 +4,6 @@ import { hexToRGBA, pxToRem } from '~/utils/filters';
 
 interface StyledButtonProps {
   $color: ColorKeys;
-  // $color: 'primary' | 'text' | 'error';
   $size: 'large' | 'medium' | 'small';
   $variant: 'contained' | 'outlined' | 'text';
   disabled?: boolean;
