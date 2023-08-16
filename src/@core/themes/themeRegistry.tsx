@@ -20,7 +20,15 @@ export default function StyledComponentsRegistry({
   if (typeof window !== 'undefined') return <>{children}</>;
 
   return (
-    <StyleSheetManager sheet={styledComponentsStyleSheet.instance}>
+    <StyleSheetManager
+      //enableVendorPrefixes: 자동접두사
+      // shouldForwardProp={(propName, elementToBeRendered) => {
+      //   return typeof elementToBeRendered === 'string'
+      //     ? isPropValid(propName)
+      //     : true;
+      // }}
+      sheet={styledComponentsStyleSheet.instance}
+    >
       {children}
     </StyleSheetManager>
   );

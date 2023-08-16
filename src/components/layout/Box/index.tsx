@@ -1,11 +1,11 @@
 'use client';
 
-import { HTMLAttributes } from 'react';
 import { styled } from 'styled-components';
 import { Responsive } from '~/types/cssProps';
+import { ColorKeys } from '~/types/theme';
 import { toPropValue } from '~/utils/cssProps';
 
-interface BoxProps {
+export interface BoxProps {
   component?: string;
   width?: Responsive<number>;
   height?: Responsive<number>;
@@ -23,11 +23,11 @@ interface BoxProps {
   pt?: Responsive<number>;
   display?: Responsive<string>;
   overflow?: Responsive<string>;
-  bgColor?: Responsive<string>;
-  color?: string;
+  bgColor?: Responsive<ColorKeys>;
+  color?: Responsive<ColorKeys>;
   children?: React.ReactNode;
 }
-interface StyledBoxProps {
+export interface StyledBoxProps {
   $width?: Responsive<number>;
   $height?: Responsive<number>;
   $minWidth?: Responsive<number>;
@@ -42,8 +42,8 @@ interface StyledBoxProps {
   $pb?: Responsive<number>;
   $pt?: Responsive<number>;
   $pl?: Responsive<number>;
-  $bgColor?: Responsive<string>;
-  $color?: Responsive<string>;
+  $bgColor?: Responsive<ColorKeys>;
+  $color?: Responsive<ColorKeys>;
   $display?: Responsive<string>;
   $overflow?: Responsive<string>;
   children?: React.ReactNode;
@@ -71,8 +71,6 @@ const StyledBox = styled.div<StyledBoxProps>`
   ${(prop) => toPropValue('min-height', prop.$minHeight, prop.theme)};
   ${(prop) => toPropValue('overflow', prop.$overflow, prop.theme)};
   ${(prop) => toPropValue('display', prop.$display, prop.theme)};
-
-  border: 1px solid #222;
 `;
 
 const Box = (props: BoxProps) => {
