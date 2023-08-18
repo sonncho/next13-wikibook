@@ -14,7 +14,10 @@ const nextConfig = {
   compiler: (() => {
     let compilerConfig = {
       // styledComponents활성화
-      styledComponents: true,
+      styledComponents: {
+        ssr: true,
+        displayName: false, // className 막기
+      },
     };
 
     if (process.env.NODE_ENV === 'production') {
