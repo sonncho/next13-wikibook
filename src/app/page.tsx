@@ -52,13 +52,43 @@ export default function Home() {
       <hr />
       <br />
 
-      <Grid>
-        <Box width={100} height={100} bgColor={'secondary'}>
-          첫번쨰 Box야
-        </Box>
-        <Box width={100} height={100} bgColor={'primary'}>
-          Box야
-        </Box>
+      <Grid container spacing={2}>
+        <Grid item xs={6} sm={4} md={2} lg={12}>
+          <Box bgColor={'secondary'}>1 Box야</Box>
+        </Grid>
+        <Grid item md={2}>
+          <Box bgColor={'secondary'}>2 Box야</Box>
+        </Grid>
+        <Grid item md={2}>
+          <Box bgColor={'secondary'}>3 Box야</Box>
+        </Grid>
+        <Grid item md={2}>
+          <Box bgColor={'secondary'}>4 Box야</Box>
+        </Grid>
+        <Grid item md={2}>
+          <Box bgColor={'secondary'}>5 Box야</Box>
+        </Grid>
+        <Grid item md={2}>
+          <Box bgColor={'secondary'}>6 Box야</Box>
+        </Grid>
+        <Grid item md={2}>
+          <Box bgColor={'secondary'}>7 Box야</Box>
+        </Grid>
+        <Grid item md={2}>
+          <Box bgColor={'secondary'}>8 Box야</Box>
+        </Grid>
+        <Grid item md={2}>
+          <Box bgColor={'secondary'}>9 Box야</Box>
+        </Grid>
+        <Grid item md={2}>
+          <Box bgColor={'secondary'}>10 Box야</Box>
+        </Grid>
+        <Grid item md={2}>
+          <Box bgColor={'secondary'}>11 Box야</Box>
+        </Grid>
+        <Grid item md={2}>
+          <Box bgColor={'secondary'}>12 Box야</Box>
+        </Grid>
       </Grid>
 
       <Typography variant="subtitle1">Subtitle</Typography>
