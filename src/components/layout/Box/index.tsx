@@ -53,6 +53,7 @@ export interface StyledBoxProps {
 
 const StyledBox = styled.div<StyledBoxProps>`
   background-color: ${({ theme }) => theme.palette.background.paper};
+  width: 100%;
   ${(prop) => toPropValue('margin', prop.$m, prop.theme)};
   ${(prop) => toPropValue('margin-top', prop.$mt, prop.theme)};
   ${(prop) => toPropValue('margin-right', prop.$mr, prop.theme)};
