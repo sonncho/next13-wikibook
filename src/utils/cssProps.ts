@@ -105,10 +105,10 @@ function isResponsivePropType<T>(prop: any): prop is ResponsiveProp<T> {
 function isSizePropType(prop: any) {
   return (
     prop &&
-    (prop !== 'width' ||
-      prop !== 'height' ||
-      prop !== 'min-height' ||
-      prop !== 'min-width')
+    (prop === 'width' ||
+      prop === 'height' ||
+      prop === 'min-height' ||
+      prop === 'min-width')
   );
 }
 

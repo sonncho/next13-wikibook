@@ -90,7 +90,7 @@ export type CSSPropertyFlexDirection =
   | 'column'
   | 'column-reverse'
   | 'row'
-  | 'rowReverse';
+  | 'row-reverse';
 
 export type CSSPropertyJustifySelf =
   | CSSPropertyGlobals
