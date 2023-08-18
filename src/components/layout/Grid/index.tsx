@@ -6,9 +6,15 @@
 
 import React, { HTMLAttributes } from 'react';
 import styled, { css } from 'styled-components';
+import {
+  CSSPropertyAlignItems,
+  CSSPropertyFlexDirection,
+  CSSPropertyJustifyContent,
+  Responsive,
+} from '~/types/cssProps';
+import { toPropValue } from '~/utils/cssProps';
 
 interface GridProps extends HTMLAttributes<HTMLDivElement> {
-  // order?: Responsive<string>;
   children: React.ReactNode;
   spacing?: number;
   container?: boolean;
@@ -18,6 +24,9 @@ interface GridProps extends HTMLAttributes<HTMLDivElement> {
   md?: number;
   lg?: number;
   xl?: number;
+  direction?: Responsive<CSSPropertyFlexDirection>;
+  justifyContent?: Responsive<CSSPropertyJustifyContent>;
+  alignItems?: Responsive<CSSPropertyAlignItems>;
 }
 interface StyledGridProps extends HTMLAttributes<HTMLDivElement> {
   $spacing?: number;
@@ -28,6 +37,9 @@ interface StyledGridProps extends HTMLAttributes<HTMLDivElement> {
   $md?: number;
   $lg?: number;
   $xl?: number;
+  $direction?: Responsive<CSSPropertyFlexDirection>;
+  $justifyContent?: Responsive<CSSPropertyJustifyContent>;
+  $alignItems?: Responsive<CSSPropertyAlignItems>;
 }
 
 const getResponsiveQuery = (width: number, value: number) => {
@@ -44,6 +56,16 @@ const StyledGrid = styled('div')<StyledGridProps>`
   box-sizing: border-box;
   display: flex;
   flex-flow: wrap;
+
+  ${(props) =>
+    props.$container &&
+    toPropValue('flex-direction', props.$direction, props.theme)}
+  ${(props) =>
+    props.$container &&
+    toPropValue('justify-content', props.$justifyContent, props.theme)}
+  ${(props) =>
+    props.$container &&
+    toPropValue('align-items', props.$alignItems, props.theme)}
 
   // spacing styles
   ${({ theme, $spacing, $container }) => {
@@ -99,6 +121,9 @@ const Grid = (props: GridProps) => {
     spacing,
     container = false,
     item = false,
+    direction,
+    justifyContent,
+    alignItems,
     children,
     ...rest
   } = props;
@@ -107,6 +132,9 @@ const Grid = (props: GridProps) => {
     <StyledGrid
       $spacing={spacing}
       $container={container}
+      $direction={direction}
+      $justifyContent={justifyContent}
+      $alignItems={alignItems}
       $item={item}
       $xs={xs}
       $sm={sm}

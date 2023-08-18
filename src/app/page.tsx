@@ -52,42 +52,22 @@ export default function Home() {
       <hr />
       <br />
 
-      <Grid container spacing={2}>
-        <Grid item xs={6} sm={4} md={2} lg={12}>
-          <Box bgColor={'secondary'}>1 Box야</Box>
+      <Grid
+        container
+        spacing={2}
+        direction={'row'}
+        justifyContent={'center'}
+        alignItems={'center'}
+      >
+        <Grid item xs={6} md={3}>
+          <Box bgColor={'secondary'} p={1} height={60}>
+            xs=6 md=8
+          </Box>
         </Grid>
-        <Grid item md={2}>
-          <Box bgColor={'secondary'}>2 Box야</Box>
-        </Grid>
-        <Grid item md={2}>
-          <Box bgColor={'secondary'}>3 Box야</Box>
-        </Grid>
-        <Grid item md={2}>
-          <Box bgColor={'secondary'}>4 Box야</Box>
-        </Grid>
-        <Grid item md={2}>
-          <Box bgColor={'secondary'}>5 Box야</Box>
-        </Grid>
-        <Grid item md={2}>
-          <Box bgColor={'secondary'}>6 Box야</Box>
-        </Grid>
-        <Grid item md={2}>
-          <Box bgColor={'secondary'}>7 Box야</Box>
-        </Grid>
-        <Grid item md={2}>
-          <Box bgColor={'secondary'}>8 Box야</Box>
-        </Grid>
-        <Grid item md={2}>
-          <Box bgColor={'secondary'}>9 Box야</Box>
-        </Grid>
-        <Grid item md={2}>
-          <Box bgColor={'secondary'}>10 Box야</Box>
-        </Grid>
-        <Grid item md={2}>
-          <Box bgColor={'secondary'}>11 Box야</Box>
-        </Grid>
-        <Grid item md={2}>
-          <Box bgColor={'secondary'}>12 Box야</Box>
+        <Grid item xs={6} md={4}>
+          <Box bgColor={'secondary'} p={1} height={20}>
+            xs=6 md=4
+          </Box>
         </Grid>
       </Grid>
 
