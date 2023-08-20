@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import Button from '~/components/atoms/Button';
+import Typography from '~/components/atoms/Typography';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta = {
-  title: 'Components/Atoms/Button',
-  component: Button,
+  title: 'Components/Atoms/Typography',
+  component: Typography,
   parameters: {
     layout: 'centered',
   },
@@ -13,15 +13,15 @@ const meta = {
   argTypes: {
     // backgroundColor: { control: 'color' },
   },
-} satisfies Meta<typeof Button>;
+} satisfies Meta<typeof Typography>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Primary: Story = {
+export const h1: Story = {
   args: {
     // primary: true,
-    children: 'Button',
-    $color: 'primary',
+    children: 'Typography',
+    $variant: 'h1',
   },
 };
