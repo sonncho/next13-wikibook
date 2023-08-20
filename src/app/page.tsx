@@ -82,8 +82,31 @@ export default function Home() {
         <Box $bgColor={'primary'}>Box</Box>
       </Box>
 
-      <Typography variant="subtitle1">Subtitle</Typography>
-      <Typography variant="h2">h2</Typography>
+      <br />
+      <br />
+      <br />
+
+      <Container style={{ border: '1px solid #222', padding: '20px' }}>
+        <Typography $variant="h1" style={{ color: 'blue', paddingBottom: '2rem' }}>
+          Typography
+        </Typography>
+        <Typography $variant="subtitle1" $align={{ sm: 'center', md: 'left' }}>
+          Subtitle1
+        </Typography>
+        <Typography $variant="subtitle2" $mb={3}>
+          Subtitle2
+        </Typography>
+        <Typography $variant="body1" $display={'inline'}>
+          body1
+        </Typography>
+        <Typography $variant="h1">h1</Typography>
+        <Typography $variant="h2">h2</Typography>
+        <Typography $variant="h3">h3</Typography>
+        <Typography $variant="button">Button</Typography>
+        <Typography $variant="caption" $display="block">
+          Caption
+        </Typography>
+      </Container>
     </main>
   );
 }
