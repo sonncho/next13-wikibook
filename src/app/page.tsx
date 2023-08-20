@@ -54,7 +54,8 @@ export default function Home() {
 
       <Grid
         container
-        spacing={2}
+        spacing={{ xs: 10, md: 5 }}
+        // spacing={2}
         direction={'row'}
         justifyContent={'center'}
         alignItems={'center'}
@@ -64,7 +65,17 @@ export default function Home() {
             xs=6 md=8
           </Box>
         </Grid>
-        <Grid item xs={6} md={4}>
+        <Grid item xs={6} md={3}>
+          <Box bgColor={'secondary'} p={1} height={20}>
+            xs=6 md=4
+          </Box>
+        </Grid>
+        <Grid item xs={6} md={3}>
+          <Box bgColor={'secondary'} p={1} height={20}>
+            xs=6 md=4
+          </Box>
+        </Grid>
+        <Grid item xs={6} md={3}>
           <Box bgColor={'secondary'} p={1} height={20}>
             xs=6 md=4
           </Box>

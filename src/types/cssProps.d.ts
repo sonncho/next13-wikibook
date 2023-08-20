@@ -6,6 +6,7 @@
  * T는 css 속성값의 타입
  */
 export type ResponsiveProp<T> = {
+  [index: string]: T;
   base?: T;
   xs?: T; // extra-small: 0px
   sm?: T; // small: 600px;
@@ -30,11 +31,7 @@ type SelfPosition =
 
 type ContentPosition = 'center' | 'end' | 'flex-end' | 'flex-start' | 'start';
 
-type ContentDistribution =
-  | 'space-around'
-  | 'space-between'
-  | 'space-evenly'
-  | 'stretch';
+type ContentDistribution = 'space-around' | 'space-between' | 'space-evenly' | 'stretch';
 
 type CSSPropertyGlobals = '-moz-initial' | 'inherit' | 'revert' | 'unset';
 
@@ -79,11 +76,7 @@ export type CSSPropertyJustifyContent =
   | 'right'
   | (string & {});
 
-export type CSSPropertyFlexWrap =
-  | CSSPropertyGlobals
-  | 'nowrap'
-  | 'wrap'
-  | 'wrap-reverse';
+export type CSSPropertyFlexWrap = CSSPropertyGlobals | 'nowrap' | 'wrap' | 'wrap-reverse';
 
 export type CSSPropertyFlexDirection =
   | CSSPropertyGlobals
@@ -119,10 +112,7 @@ export type CSSPropertyAlignSelf =
  */
 type GridLine = 'auto' | (string & {});
 
-export type CSSPropertyGridColumn =
-  | CSSPropertyGlobals
-  | GridLine
-  | (string & {});
+export type CSSPropertyGridColumn = CSSPropertyGlobals | GridLine | (string & {});
 
 export type CSSPropertyGridRow = CSSPropertyGlobals | GridLine | (string & {});
 

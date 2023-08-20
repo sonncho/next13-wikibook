@@ -34,16 +34,10 @@ const Button = ({
       {...rest}
     >
       {startIcon && (
-        <span className={`GnButton-startIcon GnSvgIcon GnSvgIcon-${size}`}>
-          {startIcon}
-        </span>
+        <span className={`GnButton-startIcon GnSvgIcon GnSvgIcon-${size}`}>{startIcon}</span>
       )}
       {children}
-      {endIcon && (
-        <span className={`GnButton-endIcon GnSvgIcon GnSvgIcon-${size}`}>
-          {endIcon}
-        </span>
-      )}
+      {endIcon && <span className={`GnButton-endIcon GnSvgIcon GnSvgIcon-${size}`}>{endIcon}</span>}
     </StyledButton>
   );
 };

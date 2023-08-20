@@ -35,13 +35,7 @@ export function toPropValue<T>(
     for (const responsiveKey in prop) {
       if (responsiveKey === 'base') {
         //default
-        result.push(
-          `${propKey}: ${toThemeValueIfNeeded(
-            propKey,
-            prop[responsiveKey],
-            theme
-          )};`
-        );
+        result.push(`${propKey}: ${toThemeValueIfNeeded(propKey, prop[responsiveKey], theme)};`);
       } else if (
         responsiveKey === 'xs' ||
         responsiveKey === 'sm' ||
@@ -57,9 +51,7 @@ export function toPropValue<T>(
           theme,
           unit
         )}`;
-        result.push(
-          `@media screen and (min-width: ${breakpoint}px) {${style}}`
-        );
+        result.push(`@media screen and (min-width: ${breakpoint}px) {${style}}`);
       }
     }
     return result.join('\n');
@@ -67,12 +59,7 @@ export function toPropValue<T>(
   return `${propKey}: ${toThemeValueIfNeeded(propKey, prop, theme)};`;
 }
 
-function toThemeValueIfNeeded<T>(
-  propKey: string,
-  value: T,
-  theme?: Theme,
-  unit?: string
-) {
+function toThemeValueIfNeeded<T>(propKey: string, value: T, theme?: Theme, unit?: string) {
   if (theme && SPACING_KEYS.includes(propKey)) {
     return theme.spacing(value as number);
   }
@@ -104,11 +91,7 @@ function isResponsivePropType<T>(prop: any): prop is ResponsiveProp<T> {
 
 function isSizePropType(prop: any) {
   return (
-    prop &&
-    (prop === 'width' ||
-      prop === 'height' ||
-      prop === 'min-height' ||
-      prop === 'min-width')
+    prop && (prop === 'width' || prop === 'height' || prop === 'min-height' || prop === 'min-width')
   );
 }
 
@@ -118,13 +101,6 @@ function isSizePropType(prop: any) {
  * @returns boolean
  */
 function isColorThemeKeys(prop: any): prop is ColorKeys {
-  const ColorKeys = [
-    'primary',
-    'secondary',
-    'success',
-    'warning',
-    'info',
-    'error',
-  ];
+  const ColorKeys = ['primary', 'secondary', 'success', 'warning', 'info', 'error'];
   return ColorKeys.filter((value) => value === prop).length > 0;
 }

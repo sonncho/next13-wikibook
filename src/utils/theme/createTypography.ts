@@ -7,12 +7,9 @@ const defaultFontFamily = '"Roboto", "Helvetica", "Arial", sans-serif';
 
 function createTypography(
   palette: PaletteOptions,
-  typography:
-    | TypographyOptions
-    | ((palette: PaletteOptions) => TypographyOptions)
+  typography: TypographyOptions | ((palette: PaletteOptions) => TypographyOptions)
 ): Typography {
-  const _ref =
-    typeof typography === 'function' ? typography(palette) : typography;
+  const _ref = typeof typography === 'function' ? typography(palette) : typography;
   const {
     fontFamily = defaultFontFamily,
     fontSize = 14,

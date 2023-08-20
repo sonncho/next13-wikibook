@@ -119,8 +119,7 @@ const StyledButton = styled.button<StyledButtonProps>`
     }
   }};
 
-  ${({ $variant, $color, theme }) =>
-    $variant === 'text' && `color: ${theme.palette[$color].main}`};
+  ${({ $variant, $color, theme }) => $variant === 'text' && `color: ${theme.palette[$color].main}`};
 
   ${({ theme }) => css`
     padding: ${theme.spacing(1.875, 3)};

@@ -17,10 +17,7 @@ function createTheme(options: ThemeOptions = {}, ...args: object[]): Theme {
   } = options;
 
   const breakpoints = createBreakpoints(breakpointsInput);
-  const typography = createTypography(
-    paletteInput,
-    typographyInput as TypographyOptions
-  );
+  const typography = createTypography(paletteInput, typographyInput as TypographyOptions);
 
   const gnTheme = merge(options, {
     breakpoints,

@@ -48,10 +48,7 @@ export interface TypographyUtils {
   pxToRem: (px: number) => string;
 }
 
-export interface Typography
-  extends Record<Variant, TypographyStyle>,
-    FontStyle,
-    TypographyUtils {}
+export interface Typography extends Record<Variant, TypographyStyle>, FontStyle, TypographyUtils {}
 
 export interface FontStyleOptions extends Partial<FontStyle> {
   allVariants?: React.CSSProperties;

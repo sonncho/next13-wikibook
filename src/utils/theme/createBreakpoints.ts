@@ -1,8 +1,4 @@
-import {
-  Breakpoint,
-  Breakpoints,
-  BreakpointsOptions,
-} from '~/types/theme/breakpoints';
+import { Breakpoint, Breakpoints, BreakpointsOptions } from '~/types/theme/breakpoints';
 
 const sortBreakpointsValues = (values: { [key in Breakpoint]: number }) => {
   const breakpointsAsArray =
@@ -11,9 +7,7 @@ const sortBreakpointsValues = (values: { [key in Breakpoint]: number }) => {
       val: values[key as Breakpoint],
     })) || [];
   // Sort in ascending order
-  breakpointsAsArray.sort(
-    (breakpoint1, breakpoint2) => breakpoint1.val - breakpoint2.val
-  );
+  breakpointsAsArray.sort((breakpoint1, breakpoint2) => breakpoint1.val - breakpoint2.val);
 
   const reduceResult = breakpointsAsArray.reduce((acc, obj) => {
     return {
@@ -65,10 +59,7 @@ function createBreakpoints(breakpoints: BreakpointsOptions): Breakpoints {
     if (keyIndex === keys.length - 1) {
       return down(keys[keyIndex]);
     }
-    return between(key, keys[keys.indexOf(key) + 1]).replace(
-      '@media',
-      '@media not all and'
-    );
+    return between(key, keys[keys.indexOf(key) + 1]).replace('@media', '@media not all and');
   }
 
   return {

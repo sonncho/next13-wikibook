@@ -10,13 +10,7 @@ import { Typography, TypographyOptions } from './typography';
 
 export type PaletteMode = 'light' | 'dark';
 
-export type ColorKeys =
-  | 'primary'
-  | 'secondary'
-  | 'success'
-  | 'warning'
-  | 'info'
-  | 'error';
+export type ColorKeys = 'primary' | 'secondary' | 'success' | 'warning' | 'info' | 'error';
 
 export interface Color {
   50: string;

@@ -9,11 +9,7 @@ export interface Spacing {
   (): string;
   (value: number): string;
   (topBottom: SpacingArgument, rightLeft: SpacingArgument): string;
-  (
-    top: SpacingArgument,
-    rightLeft: SpacingArgument,
-    bottom: SpacingArgument
-  ): string;
+  (top: SpacingArgument, rightLeft: SpacingArgument, bottom: SpacingArgument): string;
   (
     top: SpacingArgument,
     right: SpacingArgument,
