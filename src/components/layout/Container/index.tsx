@@ -21,7 +21,11 @@ const StyledContainer = styled.div<ContainerProps>`
 
 const Container = (props: ContainerProps) => {
   const { children, ...rest } = props;
-  return <StyledContainer {...rest}>{children}</StyledContainer>;
+  return (
+    <StyledContainer className="GnContainer-root" {...rest}>
+      {children}
+    </StyledContainer>
+  );
 };
 
 export default Container;
