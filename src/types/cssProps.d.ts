@@ -123,9 +123,24 @@ export type CSSPropertyGridAutoFlow =
   | 'row'
   | (string & {});
 
+export type CSSPropertyTextAlign = 'center' | 'inherit' | 'left' | 'right' | 'justify';
+
 export type CSSPropertyGridArea = CSSPropertyGlobals | GridLine | (string & {});
 
 export type SXProps = Array<func | object | bool> | func | object;
+
+export interface SystemProps {
+  $m?: Responsive<number>;
+  $mr?: Responsive<number>;
+  $ml?: Responsive<number>;
+  $mt?: Responsive<number>;
+  $mb?: Responsive<number>;
+  $p?: Responsive<number>;
+  $pr?: Responsive<number>;
+  $pb?: Responsive<number>;
+  $pt?: Responsive<number>;
+  $pl?: Responsive<number>;
+}
 
 export type SpaceKeys =
   | 'm' // margin
