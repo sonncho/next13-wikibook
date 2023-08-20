@@ -35,7 +35,7 @@ export interface BoxProps extends HTMLAttributes<HTMLDivElement> {
 
   // about grid props
   $grid?: boolean;
-  $gap?: Responsive<number>;
+  $gap?: Responsive<string>;
   $columnGap?: Responsive<string>;
   $rowGap?: Responsive<string>;
   $column?: Responsive<CSSPropertyGridColumn>;
@@ -87,11 +87,19 @@ const StyledBox = styled.div<BoxProps>`
 
   // grid가 true인경우에만 적용
   display: ${({ $grid }) => $grid && 'grid'};
-  ${(props) =>
-    props.$grid && toPropValue('grid-gap', props.theme.spacing(props.$gap as number), props.theme)}
+  ${(props) => props.$grid && toPropValue('grid-gap', props.$gap, props.theme)}
+  ${(props) => props.$grid && toPropValue('grid-column-gap', props.$columnGap, props.theme)}
+  ${(props) => props.$grid && toPropValue('grid-row-gap', props.$rowGap, props.theme)}
+  ${(props) => props.$grid && toPropValue('grid-row', props.$row, props.theme)}
+  ${(props) => props.$grid && toPropValue('grid-column', props.$column, props.theme)}
+  ${(props) => props.$grid && toPropValue('grid-auto-flow', props.$autoFlow, props.theme)}
+  ${(props) => props.$grid && toPropValue('grid-auto-columns', props.$autoColumns, props.theme)}
+  ${(props) => props.$grid && toPropValue('grid-auto-rows', props.$autoRows, props.theme)}
   ${(props) =>
     props.$grid && toPropValue('grid-template-columns', props.$templateColumns, props.theme)}
-  ${(props) => props.$grid && toPropValue('grid-column', props.$column, props.theme)}
+  ${(props) => props.$grid && toPropValue('grid-template-rows', props.$templateRows, props.theme)}
+  ${(props) => props.$grid && toPropValue('grid-template-areas', props.$templateAreas, props.theme)}
+  ${(props) => props.$grid && toPropValue('grid-area', props.$area, props.theme)}
 `;
 
 const Box = (props: BoxProps) => {

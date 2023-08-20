@@ -75,7 +75,7 @@ export default function Home() {
         </Grid>
       </Grid>
 
-      <Box $grid $gap={2} $templateColumns="repeat(4, 1fr)">
+      <Box $grid $gap={{ xs: '16px', md: '50px' }} $templateColumns="repeat(4, 1fr)">
         <Box $bgColor={'primary'}>Box</Box>
         <Box $bgColor={'primary'}>Box</Box>
         <Box $bgColor={'primary'}>Box</Box>
