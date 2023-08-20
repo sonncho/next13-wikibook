@@ -4,15 +4,15 @@ import { ColorKeys, Theme } from '~/types/theme';
 
 const SPACING_KEYS = [
   'margin',
-  'marginTop',
-  'marginLeft',
-  'marginBottom',
-  'marginRight',
+  'margin-top',
+  'margin-left',
+  'margin-bottom',
+  'margin-right',
   'padding',
-  'paddingTop',
-  'paddingLeft',
-  'paddintRight',
-  'paddingBottom',
+  'padding-top',
+  'padding-left',
+  'padding-right',
+  'padding-bottom',
 ];
 
 /**

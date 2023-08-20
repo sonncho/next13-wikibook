@@ -2,12 +2,8 @@
 
 import { HTMLAttributes, ReactNode } from 'react';
 import styled, { css } from 'styled-components';
-
 interface ContainerProps extends HTMLAttributes<HTMLDivElement> {
   children: ReactNode;
-  fixed?: boolean;
-}
-interface StyledContainerProps {
   $fixed?: boolean;
 }
 
@@ -18,18 +14,14 @@ const StyledRootContainer = css`
   margin-inline: auto;
 `;
 
-const StyledContainer = styled.div<StyledContainerProps>`
+const StyledContainer = styled.div<ContainerProps>`
   ${StyledRootContainer};
   position: ${({ $fixed }) => $fixed && 'fixed'};
 `;
 
 const Container = (props: ContainerProps) => {
-  const { fixed, children, ...rest } = props;
-  return (
-    <StyledContainer $fixed={fixed} {...rest}>
-      {children}
-    </StyledContainer>
-  );
+  const { children, ...rest } = props;
+  return <StyledContainer {...rest}>{children}</StyledContainer>;
 };
 
 export default Container;
