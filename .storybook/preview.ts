@@ -3,13 +3,22 @@ import type { Preview } from '@storybook/react';
 import { withThemeFromJSXProvider } from '@storybook/addon-styling';
 import { ThemeProvider } from 'styled-components';
 import themeOptions from '../src/@core/themes/themeOptions';
+import createTheme from '../src/utils/theme/createTheme';
+import typography from '../src/@core/themes/typography';
 import GlobalStyles from '../src/@core/styles/globalStyles';
 
 /* TODO: update import for your custom theme configurations */
 // import { lightTheme, darkTheme } from '../path/to/themes';
 
-const light = themeOptions('light');
-const dark = themeOptions('dark');
+const getTheme = (mode: 'light' | 'dark') => {
+  const coreTheme = themeOptions(mode);
+  let theme = createTheme(coreTheme);
+  theme = createTheme(theme, { typography: { ...typography(theme) } });
+  return theme;
+};
+
+const light = getTheme('light');
+const dark = getTheme('dark');
 
 const preview: Preview = {
   parameters: {
