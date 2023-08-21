@@ -23,7 +23,6 @@ interface AvatarProps {
 }
 
 const StyledAvatar = styled('div')<AvatarProps>`
-  border: 1px solid #222;
   height: 40px;
   display: flex;
   font-size: 1.25rem;
