@@ -56,7 +56,7 @@ export function toPropValue<T>(
     }
     return result.join('\n');
   }
-  return `${propKey}: ${toThemeValueIfNeeded(propKey, prop, theme)};`;
+  return `${propKey}: ${toThemeValueIfNeeded(propKey, prop, theme, unit)};`;
 }
 
 function toThemeValueIfNeeded<T>(propKey: string, value: T, theme?: Theme, unit?: string) {
@@ -67,7 +67,11 @@ function toThemeValueIfNeeded<T>(propKey: string, value: T, theme?: Theme, unit?
     return theme.palette[value as string].main;
   }
   if (theme && isSizePropType(propKey)) {
-    return unit ? `${value}${unit}` : `${value}px`;
+    if (unit === 'rem' && typeof value === 'number') {
+      return `${value * 0.25}rem`;
+    } else {
+      return `${value}px`;
+    }
   }
   return value;
 }
@@ -91,7 +95,12 @@ function isResponsivePropType<T>(prop: any): prop is ResponsiveProp<T> {
 
 function isSizePropType(prop: any) {
   return (
-    prop && (prop === 'width' || prop === 'height' || prop === 'min-height' || prop === 'min-width')
+    prop &&
+    (prop === 'width' ||
+      prop === 'height' ||
+      prop === 'min-height' ||
+      prop === 'min-width' ||
+      prop === 'gap')
   );
 }
 
