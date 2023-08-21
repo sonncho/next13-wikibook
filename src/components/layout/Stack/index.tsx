@@ -24,7 +24,6 @@ interface StackProps extends HTMLAttributes<HTMLDivElement> {
 
 const StyledStack = styled.div<StackProps>`
   display: flex;
-  /* gap: 12px; */
   & > :not(style) ~ :not(style) {
     ${(props) => !props.$useFlexGap && toPropValue('margin-left', props.$spacing, props.theme)};
   }
