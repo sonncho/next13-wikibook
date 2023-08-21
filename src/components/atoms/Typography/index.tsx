@@ -13,6 +13,7 @@ interface TypographyProps extends SystemProps {
   $display?: 'block' | 'inline-block' | 'inline';
   $component?: React.ElementType;
   $align?: Responsive<CSSPropertyTextAlign>;
+  style?: React.CSSProperties;
 }
 
 const defaultVariantMapping = {
