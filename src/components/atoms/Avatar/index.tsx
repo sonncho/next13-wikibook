@@ -36,7 +36,7 @@ const StyledAvatar = styled('div')<AvatarProps>`
   width: ${({ $width }) => `${$width}px`};
   height: ${({ $height }) => `${$height}px`};
   background-color: ${({ theme, $bgColor }) =>
-    $bgColor ? `${hexToRGBA($bgColor, 1)}` : theme.palette.grey[200]};
+    $bgColor ? `${hexToRGBA($bgColor, 1)}` : theme.palette.grey[300]};
   border-radius: ${({ $variant }) =>
     $variant === 'circle' ? '50%' : $variant === 'rounded' ? '4px' : '0px'};
 `;
