@@ -6,6 +6,7 @@ import themeOptions from '../src/@core/themes/themeOptions';
 import createTheme from '../src/utils/theme/createTheme';
 import typography from '../src/@core/themes/typography';
 import GlobalStyles from '../src/@core/styles/globalStyles';
+import * as NextImage from 'next/image';
 
 /* TODO: update import for your custom theme configurations */
 // import { lightTheme, darkTheme } from '../path/to/themes';
