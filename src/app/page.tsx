@@ -1,9 +1,12 @@
 import { BiBell, BiArchiveIn } from 'react-icons/bi';
+import { BsPersonFill } from 'react-icons/bs';
+import Avatar from '~/components/atoms/Avatar';
 import Button from '~/components/atoms/Button';
 import Typography from '~/components/atoms/Typography';
 import Box from '~/components/layout/Box';
 import Container from '~/components/layout/Container';
 import Grid from '~/components/layout/Grid';
+import Stack from '~/components/layout/Stack';
 
 export default function Home() {
   return (
@@ -106,6 +109,25 @@ export default function Home() {
         <Typography $variant="caption" $display="block">
           Caption
         </Typography>
+      </Container>
+
+      <Container style={{ border: '1px solid #222', padding: '30px' }}>
+        <Stack $direction={'row'} $justifyContent={'center'} $spacing={2} $useFlexGap>
+          <Avatar $variant={'square'} alt="Icon Avatar" $width={60} $height={60}>
+            <BsPersonFill />
+          </Avatar>
+          <Avatar $variant={'rounded'} alt="Icon Avatar" src="/images/avatar.png" />
+          <Avatar
+            $width={100}
+            $height={100}
+            $variant="square"
+            alt="Icon Avatar"
+            src="https://picsum.photos/id/237/200/400"
+          />
+          <Avatar alt="Icon Avatar" $bgColor="#89ff4d">
+            초
+          </Avatar>
+        </Stack>
       </Container>
     </main>
   );
