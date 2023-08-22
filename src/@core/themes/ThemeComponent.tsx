@@ -2,6 +2,7 @@
 
 import React, { ReactNode } from 'react';
 import { ThemeProvider } from 'styled-components';
+import GlobalStyles from '../styles/globalStyles';
 import themeOptions from './themeOptions';
 
 import typography from './typography';
@@ -21,7 +22,12 @@ const ThemeComponent = (props: IProps) => {
 
   console.log('ThemeComponent.tsx ----------', theme);
 
-  return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
+  return (
+    <ThemeProvider theme={theme}>
+      <GlobalStyles />
+      {children}
+    </ThemeProvider>
+  );
 };
 
 export default ThemeComponent;
