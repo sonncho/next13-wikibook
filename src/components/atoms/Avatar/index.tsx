@@ -11,14 +11,36 @@ export type ColorValueHex = `#${string}`;
 interface AvatarProps {
   children?: ReactNode;
   /**
-   * HexCode Color
+   * 배경색상 HexCode
    */
   $bgColor?: ColorValueHex;
+  /**
+   * 아바타 모양
+   */
   $variant?: AvartarVariant;
+  /**
+   * 넓이
+   */
   $width?: number;
+  /**
+   * 높이
+   */
   $height?: number;
+  /**
+   * 이미지 설명
+   * <br/>
+   * (src를 지정하는 경우 반드시 작성)
+   */
   alt?: string;
+  /**
+   * 이미지 경로
+   * <br/>
+   * (외부이미지 | public폴더내 이미지)
+   */
   src?: string;
+  /**
+   * Inine CSS Style
+   */
   style?: CSSProperties;
 }
 
