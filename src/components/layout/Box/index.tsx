@@ -53,7 +53,6 @@ export interface BoxProps extends HTMLAttributes<HTMLDivElement> {
 
 const StyledBox = styled.div<BoxProps>`
   background-color: ${({ theme }) => theme.palette.background.paper};
-  width: 100%;
   ${(prop) => toPropValue('margin', prop.$m, prop.theme)};
   ${(prop) => toPropValue('margin-top', prop.$mt, prop.theme)};
   ${(prop) => toPropValue('margin-right', prop.$mr, prop.theme)};
@@ -104,7 +103,7 @@ const StyledBox = styled.div<BoxProps>`
 
 const Box = (props: BoxProps) => {
   return (
-    <StyledBox {...props} className={`GnBox-root ${props.$grid ? 'GnBox-grid' : ''}`}>
+    <StyledBox {...props} className={`GnBox-root ${props.$grid ? 'GnBox-grid' : null}`}>
       {props.children}
     </StyledBox>
   );
