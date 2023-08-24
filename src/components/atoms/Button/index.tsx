@@ -11,7 +11,7 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   startIcon?: JSX.Element;
   endIcon?: JSX.Element;
   $disabled?: boolean;
-  children: React.ReactNode;
+  children?: React.ReactNode;
 }
 
 const Button = ({
