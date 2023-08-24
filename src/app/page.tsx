@@ -1,7 +1,15 @@
 import { BiBell, BiArchiveIn } from 'react-icons/bi';
-import { BsPersonFill } from 'react-icons/bs';
+import {
+  BsBlockquoteLeft,
+  BsBook,
+  BsBorderAll,
+  BsBorderBottom,
+  BsPersonFill,
+  BsTextParagraph,
+} from 'react-icons/bs';
 import Avatar from '~/components/atoms/Avatar';
 import Button from '~/components/atoms/Button';
+import Divider from '~/components/atoms/Divider';
 import Typography from '~/components/atoms/Typography';
 import Box from '~/components/layout/Box';
 import Container from '~/components/layout/Container';
@@ -129,6 +137,79 @@ export default function Home() {
           </Avatar>
         </Stack>
       </Container>
+
+      <Container style={{ border: '1px solid #999', padding: '20px' }}>
+        <Typography $variant={'body2'}>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus id dignissim justo.
+          Nulla ut facilisis ligula. Interdum et malesuada fames ac ante ipsum primis in faucibus.
+          Sed malesuada lobortis pretium.
+        </Typography>
+        <Divider $textAlign="left">Left</Divider>
+        <Typography $variant={'body2'}>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus id dignissim justo.
+          Nulla ut facilisis ligula. Interdum et malesuada fames ac ante ipsum primis in faucibus.
+          Sed malesuada lobortis pretium.
+        </Typography>
+        <Divider />
+        <Typography $variant={'body2'}>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus id dignissim justo.
+          Nulla ut facilisis ligula. Interdum et malesuada fames ac ante ipsum primis in faucibus.
+          Sed malesuada lobortis pretium.
+        </Typography>
+        <Divider $textAlign="right">Right</Divider>
+        <Typography $variant={'body2'}>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus id dignissim justo.
+          Nulla ut facilisis ligula. Interdum et malesuada fames ac ante ipsum primis in faucibus.
+          Sed malesuada lobortis pretium.
+        </Typography>
+        <Divider>Center</Divider>
+        <Typography $variant={'body2'}>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus id dignissim justo.
+          Nulla ut facilisis ligula. Interdum et malesuada fames ac ante ipsum primis in faucibus.
+          Sed malesuada lobortis pretium.
+        </Typography>
+      </Container>
+
+      <Grid $container>
+        <Grid $item $xs={5}>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus id dignissim justo.
+          Nulla ut facilisis ligula. Interdum et malesuada fames ac ante ipsum primis in faucibus.
+          Sed malesuada lobortis pretium.
+        </Grid>
+        <Divider $orientation="vertical">Vertical</Divider>
+        <Grid $item $xs={5}>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus id dignissim justo.
+          Nulla ut facilisis ligula. Interdum et malesuada fames ac ante ipsum primis in faucibus.
+          Sed malesuada lobortis pretium.
+        </Grid>
+      </Grid>
+
+      <div>
+        <Box
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            width: 'fit-content',
+            borderRadius: '12px',
+            border: '1px solid #222',
+            fontSize: '20px',
+          }}
+        >
+          <BsTextParagraph style={{ margin: '0.5rem' }} />
+          <BsBlockquoteLeft style={{ margin: '0.5rem' }} />
+          <BsBook style={{ margin: '0.5rem' }} />
+          <Divider $orientation={'vertical'} $variant={'middle'} $flexItem />
+          <BsBorderAll style={{ margin: '0.5rem' }} />
+          <BsBorderBottom style={{ margin: '0.5rem' }} />
+        </Box>
+      </div>
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
     </main>
   );
 }
