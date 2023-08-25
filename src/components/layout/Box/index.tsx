@@ -1,6 +1,6 @@
 'use client';
 
-import { HTMLAttributes } from 'react';
+import { ElementType, HTMLAttributes } from 'react';
 import { styled } from 'styled-components';
 import {
   CSSPropertyGridArea,
@@ -14,6 +14,7 @@ import { toPropValue } from '~/utils/cssProps';
 
 export interface BoxProps extends HTMLAttributes<HTMLDivElement> {
   children?: React.ReactNode;
+  $component?: ElementType;
   $width?: Responsive<number>;
   $height?: Responsive<number>;
   $minWidth?: Responsive<number>;
@@ -35,7 +36,7 @@ export interface BoxProps extends HTMLAttributes<HTMLDivElement> {
 
   // about grid props
   $grid?: boolean;
-  $gap?: Responsive<string>;
+  $gap?: Responsive<number>;
   $columnGap?: Responsive<string>;
   $rowGap?: Responsive<string>;
   $column?: Responsive<CSSPropertyGridColumn>;
@@ -71,6 +72,7 @@ const StyledBox = styled.div<BoxProps>`
   ${(prop) => toPropValue('min-height', prop.$minHeight, prop.theme)};
   ${(prop) => toPropValue('overflow', prop.$overflow, prop.theme)};
   ${(prop) => toPropValue('display', prop.$display, prop.theme)};
+  ${(prop) => toPropValue('gap', prop.$gap, prop.theme)};
 
   /* columnGap
   rowGap
@@ -102,8 +104,13 @@ const StyledBox = styled.div<BoxProps>`
 `;
 
 const Box = (props: BoxProps) => {
+  const { $component, ...rest } = props;
   return (
-    <StyledBox {...props} className={`GnBox-root ${props.$grid ? 'GnBox-grid' : null}`}>
+    <StyledBox
+      as={$component}
+      className={`GnBox-root ${props.$grid ? 'GnBox-grid' : ''}`}
+      {...rest}
+    >
       {props.children}
     </StyledBox>
   );
