@@ -96,6 +96,12 @@ const StyledTextareaWrapper = styled.div<{
     box-shadow: var(--Textarea-focusedInset, inset) 0 0 0 calc(var(--Textarea-focused) * 2px)
       ${({ theme }) => theme.palette.primary.light};
   }
+  &.Gn-disabled {
+    cursor: default;
+    background-color: ${({ theme }) => theme.palette.action.disabledBackground};
+    color: ${({ theme }) => theme.palette.action.disabled};
+    pointer-events: none;
+  }
 `;
 
 const StyledTextarea = styled.textarea<{ $error?: boolean }>`
@@ -105,6 +111,7 @@ const StyledTextarea = styled.textarea<{ $error?: boolean }>`
   font-style: inherit;
   font-weight: inherit;
   line-height: inherit;
+  background-color: transparent;
   color: ${({ theme }) => theme.palette.text.primary};
   border: 0;
   outline: none;
@@ -138,6 +145,7 @@ const Textarea = ({
   size = 'medium',
   onChange,
   error = false,
+  disabled = false,
   startDecorator,
   endDecorator,
   ...rest
@@ -170,7 +178,11 @@ const Textarea = ({
   );
 
   return (
-    <StyledTextareaWrapper className={className} $size={size} $error={error}>
+    <StyledTextareaWrapper
+      className={`${className} ${disabled ? 'Gn-disabled' : ''}`}
+      $size={size}
+      $error={error}
+    >
       {startDecorator && (
         <StyledDecorator className="GnTextarea-startDecorator">{startDecorator}</StyledDecorator>
       )}
@@ -182,6 +194,7 @@ const Textarea = ({
         autoComplete="off"
         spellCheck="false"
         autoCorrect="off"
+        disabled={disabled}
         {...rest}
       >
         {children}

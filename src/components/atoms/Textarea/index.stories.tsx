@@ -53,7 +53,7 @@ const TextareaWithDecorators = ({ ...args }) => {
       onChange={(e) => setText(e.target.value)}
       placeholder="Enter Text..."
       startDecorator={
-        <Box $display={'flex'} $gap={3}>
+        <Box $display={'flex'} $gap={3} style={{ backgroundColor: 'transparent' }}>
           <Button $variant="outlined" $color={'secondary'} $size={'small'} onClick={addEmoji('👍')}>
             👍
           </Button>
@@ -78,6 +78,10 @@ const TextareaWithDecorators = ({ ...args }) => {
 export const WithDecorators: Story = {
   args: {
     placeholder: 'Please Enter...',
+    minRows: 3,
+    rows: 3,
+    maxRows: 5,
+    size: 'medium',
   },
   render: (args) => <TextareaWithDecorators {...args} />,
 };
