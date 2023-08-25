@@ -35,7 +35,7 @@ const StyledInputBaseRoot = styled.div`
     pointer-events: none;
   }
   &::after {
-    border-bottom: 2px solid rgb(144, 202, 249);
+    border-bottom: ${({ theme }) => theme.palette.primary.main};
     left: 0px;
     bottom: 0px;
     content: '';
