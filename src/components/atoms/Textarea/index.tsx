@@ -1,7 +1,11 @@
 'use client';
 
 import React, { ReactNode, TextareaHTMLAttributes, useCallback, useState } from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+import { capitalize, getClassNames } from '~/utils/filters';
+
+export type TextareaSize = 'small' | 'medium' | 'large';
+export type TextareaVariant = 'plain' | 'outlined' | 'soft' | 'solid';
 
 interface TextareaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
   children?: ReactNode;
@@ -14,14 +18,55 @@ interface TextareaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
    */
   maxRows?: number;
   error?: boolean;
+  /**
+   * 사이즈
+   */
+  size?: TextareaSize;
+  /**
+   * 비활성화 여부
+   */
+  disabled?: boolean;
+  /**
+   * 앞쪽 decorator
+   */
   startDecorator?: ReactNode;
+  /**
+   * 뒤쪽 decorator
+   */
   endDecorator?: ReactNode;
 }
 
-const StyledTextareaWrapper = styled.div<{ error?: boolean }>`
+//* Textarea size style
+const getSizeStyle = ($size: TextareaSize) => {
+  switch ($size) {
+    case 'small': {
+      return css`
+        font-size: 0.875rem;
+        padding: 7px 0 7px 8px;
+      `;
+    }
+    case 'large': {
+      return css`
+        font-size: 1.125rem;
+        padding: 11px 0 11px 16px;
+      `;
+    }
+    default: {
+      return css`
+        font-size: 1rem;
+        padding: 7px 0 7px 12px;
+      `;
+    }
+  }
+};
+
+const StyledTextareaWrapper = styled.div<{
+  $error: boolean;
+  $size: TextareaSize;
+}>`
   border: 1px solid
-    ${({ theme, error }) =>
-      error ? theme.palette.error.main : `rgba(${theme.palette.customColors.main}, 0.22)`};
+    ${({ theme, $error }) =>
+      $error ? theme.palette.error.main : `rgba(${theme.palette.customColors.main}, 0.22)`};
   border-radius: ${({ theme }) => theme.shape.borderRadius}px;
   padding-inline-start: 0.75rem;
   padding-block: calc(0.5rem - 1px);
@@ -29,9 +74,12 @@ const StyledTextareaWrapper = styled.div<{ error?: boolean }>`
   position: relative;
   display: flex;
   flex-direction: column;
-  min-width: 300px;
+  min-width: 250px;
   width: 100%;
   cursor: text;
+  line-height: 1.5;
+  font-family: ${({ theme }) => theme.typography.fontFamily};
+  ${(props) => getSizeStyle(props.$size)}
   &:focus-within::before {
     --Textarea-focused: 1;
   }
@@ -47,16 +95,16 @@ const StyledTextareaWrapper = styled.div<{ error?: boolean }>`
     margin: calc(1px * -1);
     box-shadow: var(--Textarea-focusedInset, inset) 0 0 0 calc(var(--Textarea-focused) * 2px)
       ${({ theme }) => theme.palette.primary.light};
-    /* box-shadow: 1px 0 0 2px ; */
   }
 `;
 
-const StyledTextarea = styled.textarea<{ error?: boolean }>`
-  font-family: ${({ theme }) => theme.typography.fontFamily};
-  font-weight: 400;
-  font-size: 1rem;
-  line-height: 20px;
+const StyledTextarea = styled.textarea<{ $error?: boolean }>`
   box-sizing: border-box;
+  font-family: inherit;
+  font-size: inherit;
+  font-style: inherit;
+  font-weight: inherit;
+  line-height: inherit;
   color: ${({ theme }) => theme.palette.text.primary};
   border: 0;
   outline: none;
@@ -85,16 +133,17 @@ const StyledDecorator = styled.div`
 const Textarea = ({
   children,
   rows = 3,
-  minRows = 5,
-  maxRows = 10,
+  minRows = 3,
+  maxRows = 5,
+  size = 'medium',
   onChange,
-  error,
+  error = false,
   startDecorator,
   endDecorator,
   ...rest
 }: TextareaProps) => {
   const [textareaRows, setTextareaRows] = useState(Math.min(rows, minRows));
-
+  const className = getClassNames('Textarea', [`size${capitalize(size)}`]);
   console.assert(!(rows < minRows), 'Textarea: rows should be generater then minRows');
 
   const handleChange = useCallback(
@@ -121,7 +170,7 @@ const Textarea = ({
   );
 
   return (
-    <StyledTextareaWrapper className={`GnTextarea-root`} error={error}>
+    <StyledTextareaWrapper className={className} $size={size} $error={error}>
       {startDecorator && (
         <StyledDecorator className="GnTextarea-startDecorator">{startDecorator}</StyledDecorator>
       )}

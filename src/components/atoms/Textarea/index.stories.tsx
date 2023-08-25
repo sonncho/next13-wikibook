@@ -4,14 +4,12 @@ import Button from '../Button';
 import Typography from '../Typography';
 import Textarea from '.';
 import Box from '~/components/layout/Box';
+import Stack from '~/components/layout/Stack';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta = {
   title: 'Components/Atoms/Textarea',
   component: Textarea,
-  // parameters: {
-  //   layout: 'centered',
-  // },
   tags: ['autodocs'],
   argTypes: {
     // backgroundColor: { control: 'color' },
@@ -21,13 +19,31 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const BasicTextarea: Story = {
+//* Basic
+export const Basic: Story = {
   args: {
     placeholder: 'Please Enter...',
   },
   render: (args) => <Textarea {...args} />,
 };
 
+//* Size
+export const Size: Story = {
+  args: {
+    rows: 2,
+    minRows: 2,
+    maxRows: 5,
+  },
+  render: (args) => (
+    <Stack $spacing={2} $direction={{ xs: 'column', sm: 'row' }} $alignItems={'center'} $useFlexGap>
+      <Textarea {...args} size="small" placeholder="Small" />
+      <Textarea {...args} placeholder="Medium" />
+      <Textarea {...args} size="large" placeholder="Large" />
+    </Stack>
+  ),
+};
+
+//* Decorator
 const TextareaWithDecorators = ({ ...args }) => {
   const [text, setText] = useState('');
   const addEmoji = (emoji: string) => () => setText(`${text}${emoji}`);
@@ -59,7 +75,7 @@ const TextareaWithDecorators = ({ ...args }) => {
   );
 };
 
-export const Decorators: Story = {
+export const WithDecorators: Story = {
   args: {
     placeholder: 'Please Enter...',
   },
