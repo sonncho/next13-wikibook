@@ -5,6 +5,7 @@ import { ThemeProvider } from 'styled-components';
 import themeOptions from '../src/@core/themes/themeOptions';
 import createTheme from '../src/utils/theme/createTheme';
 import typography from '../src/@core/themes/typography';
+import '../src/app/globals.css';
 import GlobalStyles from '../src/@core/styles/globalStyles';
 import * as NextImage from 'next/image';
 
@@ -21,7 +22,7 @@ const getTheme = (mode: 'light' | 'dark') => {
 const light = getTheme('light');
 const dark = getTheme('dark');
 
-const preview: Preview = {
+export const preview: Preview = {
   parameters: {
     actions: { argTypesRegex: '^on[A-Z].*' },
     controls: {
@@ -31,20 +32,17 @@ const preview: Preview = {
       },
     },
   },
-
-  decorators: [
-    // Adds global styles and theme switching support.
-    withThemeFromJSXProvider({
-      /* Uncomment for theme switching support */
-      themes: {
-        light,
-        dark,
-      },
-      defaultTheme: 'light',
-      Provider: ThemeProvider,
-      GlobalStyles,
-    }),
-  ],
 };
 
-export default preview;
+export const decorators = [
+  // Adds global styles and theme switching support.
+  withThemeFromJSXProvider({
+    themes: {
+      light,
+      dark,
+    },
+    defaultTheme: 'light',
+    Provider: ThemeProvider,
+    GlobalStyles,
+  }),
+];
