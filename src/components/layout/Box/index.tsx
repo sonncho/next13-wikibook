@@ -71,8 +71,7 @@ const StyledBox = styled.div<BoxProps>`
   ${(prop) => toPropValue('min-width', prop.$minWidth, prop.theme)};
   ${(prop) => toPropValue('min-height', prop.$minHeight, prop.theme)};
   ${(prop) => toPropValue('overflow', prop.$overflow, prop.theme)};
-  ${(prop) => toPropValue('display', prop.$display, prop.theme)};
-  ${(prop) => toPropValue('gap', prop.$gap, prop.theme)};
+  ${(prop) => toPropValue('display', prop.$display, prop.theme)}
 
   /* columnGap
   rowGap
