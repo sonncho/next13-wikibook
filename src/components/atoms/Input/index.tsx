@@ -9,9 +9,11 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
    */
   // input기본 props를 한꺼번에 넣을수 있도록 따로 추가
   inputProps?: InputHTMLAttributes<HTMLInputElement>;
+  error?: boolean;
+  fullWidth?: boolean;
 }
 
-const StyledInputBaseRoot = styled.div`
+const StyledInputBaseRoot = styled.div<{ $error: boolean; $fullWidth: boolean }>`
   font-family: ${({ theme }) => theme.typography.fontFamily};
   font-weight: 400;
   font-size: 1rem;
@@ -21,11 +23,11 @@ const StyledInputBaseRoot = styled.div`
   box-sizing: border-box;
   cursor: text;
   display: inline-flex;
-  -webkit-box-align: center;
   align-items: center;
   position: relative;
+  width: ${({ $fullWidth }) => $fullWidth && '100%'};
   &::before {
-    border-bottom: ${({ theme }) => `rgba(${theme.palette.customColors.main}, 0.7)`};
+    border-bottom: 1px solid ${({ theme }) => `rgba(${theme.palette.customColors.main}, 0.22)`};
     left: 0px;
     bottom: 0px;
     content: ' ';
@@ -34,8 +36,11 @@ const StyledInputBaseRoot = styled.div`
     transition: border-bottom-color 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
     pointer-events: none;
   }
+  &:focus-within::after {
+    transform: scaleX(1) translateX(0px);
+  }
   &::after {
-    border-bottom: ${({ theme }) => theme.palette.primary.main};
+    border-bottom: 2px solid ${({ theme }) => theme.palette.primary.main};
     left: 0px;
     bottom: 0px;
     content: '';
@@ -45,9 +50,14 @@ const StyledInputBaseRoot = styled.div`
     transition: transform 200ms cubic-bezier(0, 0, 0.2, 1) 0ms;
     pointer-events: none;
   }
+  // Error
+  &.Gn-error::after,
+  &.Gn-error::before {
+    border-color: ${({ theme }) => theme.palette.error.main};
+  }
 `;
 
-const StyledInputBaseInput = styled.input<InputProps>`
+const StyledInputBaseInput = styled.input`
   font: inherit;
   letter-spacing: inherit;
   color: currentColor;
@@ -60,12 +70,20 @@ const StyledInputBaseInput = styled.input<InputProps>`
   display: block;
   min-width: 0px;
   width: 100%;
+  &::placeholder {
+    color: ${({ theme }) => `rgba(${theme.palette.customColors.main}, 0.32)`};
+  }
 `;
 
-const Input = (props: InputProps) => {
-  const { inputProps = {}, ...rest } = props;
+const Input = ({ inputProps = {}, fullWidth = false, error = false, ...rest }: InputProps) => {
   return (
-    <StyledInputBaseRoot className="GnInputBase-root">
+    <StyledInputBaseRoot
+      className={`GnInputBase-root ${error ? 'Gn-error' : ''} ${
+        fullWidth ? 'GnInputBase-fullWidth' : ''
+      }`}
+      $fullWidth={fullWidth}
+      $error={error}
+    >
       <StyledInputBaseInput className="GnInputBase-input" {...inputProps} {...rest} />
     </StyledInputBaseRoot>
   );
