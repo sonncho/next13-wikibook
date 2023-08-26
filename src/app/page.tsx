@@ -10,6 +10,7 @@ import {
 import Avatar from '~/components/atoms/Avatar';
 import Button from '~/components/atoms/Button';
 import Divider from '~/components/atoms/Divider';
+import Input from '~/components/atoms/Input';
 import Typography from '~/components/atoms/Typography';
 import Box from '~/components/layout/Box';
 import Container from '~/components/layout/Container';
@@ -86,7 +87,7 @@ export default function Home() {
         </Grid>
       </Grid>
 
-      <Box $grid $gap={{ xs: '16px', md: '50px' }} $templateColumns="repeat(4, 1fr)">
+      <Box $grid $gap={{ xs: 20, md: 16 }} $templateColumns="repeat(4, 1fr)">
         <Box $bgColor={'primary'}>Box</Box>
         <Box $bgColor={'primary'}>Box</Box>
         <Box $bgColor={'primary'}>Box</Box>
@@ -118,6 +119,10 @@ export default function Home() {
           Caption
         </Typography>
       </Container>
+
+      <Box $p={3} $component={'form'} aria-autocomplete="none" style={{ border: '1px solid #222' }}>
+        <Input placeholder="Please enter text..." inputProps={{ 'aria-label': 'description' }} />
+      </Box>
 
       <Container style={{ border: '1px solid #222', padding: '30px' }}>
         <Stack $direction={'row'} $justifyContent={'center'} $spacing={2} $useFlexGap>

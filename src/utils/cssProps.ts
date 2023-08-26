@@ -100,7 +100,8 @@ function isSizePropType(prop: any) {
       prop === 'height' ||
       prop === 'min-height' ||
       prop === 'min-width' ||
-      prop === 'gap')
+      prop === 'gap' ||
+      prop === 'grid-gap')
   );
 }
 
