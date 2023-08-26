@@ -1,3 +1,5 @@
+import { GlobalClassesMapping } from '~/types';
+
 /**
  * hexCode -> RGBA
  * @param hexCode
@@ -42,20 +44,37 @@ export const capitalize = (word: string) => {
 
 /**
  * className 생성
- * @param name 앞에고정적으로 붙는 문자열(컴포넌트이름) ex.'Divider'
- * @param others 추가적으로 생성될 클래스명 ex.['fullWidth', 'textAlignMiddle']
- * @param sepearator 컴포넌트명과 생설될클래스명 구분자 ex.'-'
- * @returns 문자열 ex.'GnDivider-root GnDivider-fullWidth GnDivider-textAlignMiddle'
+ * @param componentName 앞에고정적으로 붙는 문자열(컴포넌트이름) ex.'GnDivider'
+ * @param others 추가적으로 생성될 클래스명 ex.['focused','fullWidth', 'textAlignMiddle']
+ * @param prefix class앞에 붙일 prefix ex.'Gn'
+ * @returns 문자열 ex.'GnDivider-root, Gn-focused GnDivider-fullWidth GnDivider-textAlignMiddle'
  */
-export const getClassNames = (name: string, others?: string[], sepearator: string = '-') => {
-  const prefixString = `Gn${capitalize(name)}${sepearator}`;
+export const generateClassNames = (
+  componentName: string,
+  slots: (string | undefined | boolean)[],
+  prefix: string = 'Gn'
+) => {
+  const globalClassesMapping: GlobalClassesMapping = {
+    active: 'active',
+    checked: 'checked',
+    completed: 'completed',
+    disabled: 'disabled',
+    readOnly: 'readOnly',
+    error: 'error',
+    expanded: 'expanded',
+    focused: 'focused',
+    focusVisible: 'focusVisible',
+    required: 'required',
+    selected: 'selected',
+  };
 
-  if (others === undefined) return `${prefixString}root`;
-
-  const names = [`${prefixString}root`];
-  for (const value of others) {
-    names.push(`${prefixString}${value}`);
+  const output = [];
+  for (const slot of slots) {
+    if (typeof slot === 'string') {
+      const globalClass = globalClassesMapping[slot];
+      output.push(globalClass ? `${prefix}-${globalClass}` : `${componentName}-${slot}`);
+    }
   }
 
-  return names.join(' ');
+  return output.join(' ');
 };

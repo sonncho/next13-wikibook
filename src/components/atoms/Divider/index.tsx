@@ -2,7 +2,7 @@
 
 import React, { ReactNode } from 'react';
 import styled, { css } from 'styled-components';
-import { getClassNames } from '~/utils/filters';
+import { generateClassNames } from '~/utils/filters';
 
 export type DividerTextAlign = 'center' | 'right' | 'left';
 export type DividerOrientation = 'vertical' | 'horizontal';
@@ -102,15 +102,12 @@ const Divider = (props: DividerProps) => {
     $variant = 'fullWidth',
     ...rest
   } = props;
-  const classNames = getClassNames('Divider', [
-    $variant,
-    // `${children} && textAlign${capitalize($textAlign)}`,
-  ]);
+  const classes = generateClassNames('GnDivider', ['root', $variant]);
 
   return (
     <StyledDivider
       as={children ? 'div' : $component}
-      className={classNames}
+      className={classes}
       role={children ? 'seperator' : 'presentation'}
       $textAlign={$textAlign}
       $orientation={$orientation}

@@ -3,7 +3,7 @@
 import React, { ReactNode, TextareaHTMLAttributes, useCallback, useState } from 'react';
 import styled, { css } from 'styled-components';
 import { Size } from '~/types';
-import { capitalize, getClassNames } from '~/utils/filters';
+import { capitalize, generateClassNames } from '~/utils/filters';
 
 interface TextareaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
   children?: ReactNode;
@@ -149,7 +149,11 @@ const Textarea = ({
   ...rest
 }: TextareaProps) => {
   const [textareaRows, setTextareaRows] = useState(Math.min(rows, minRows));
-  const className = getClassNames('Textarea', [`size${capitalize(size)}`]);
+  const classes = generateClassNames('GnTextarea', [
+    'root',
+    `size${capitalize(size)}`,
+    disabled && 'disabled',
+  ]);
   console.assert(!(rows < minRows), 'Textarea: rows should be generater then minRows');
 
   const handleChange = useCallback(
@@ -176,11 +180,7 @@ const Textarea = ({
   );
 
   return (
-    <StyledTextareaWrapper
-      className={`${className} ${disabled ? 'Gn-disabled' : ''}`}
-      $size={size}
-      $error={error}
-    >
+    <StyledTextareaWrapper className={classes} $size={size} $error={error}>
       {startDecorator && (
         <StyledDecorator className="GnTextarea-startDecorator">{startDecorator}</StyledDecorator>
       )}
