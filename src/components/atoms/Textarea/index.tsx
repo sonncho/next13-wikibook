@@ -2,10 +2,8 @@
 
 import React, { ReactNode, TextareaHTMLAttributes, useCallback, useState } from 'react';
 import styled, { css } from 'styled-components';
+import { Size } from '~/types';
 import { capitalize, getClassNames } from '~/utils/filters';
-
-export type TextareaSize = 'small' | 'medium' | 'large';
-export type TextareaVariant = 'plain' | 'outlined' | 'soft' | 'solid';
 
 interface TextareaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
   children?: ReactNode;
@@ -21,7 +19,7 @@ interface TextareaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
   /**
    * 사이즈
    */
-  size?: TextareaSize;
+  size?: Size;
   /**
    * 비활성화 여부
    */
@@ -37,7 +35,7 @@ interface TextareaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
 }
 
 //* Textarea size style
-const getSizeStyle = ($size: TextareaSize) => {
+const getSizeStyle = ($size: Size) => {
   switch ($size) {
     case 'small': {
       return css`
@@ -62,7 +60,7 @@ const getSizeStyle = ($size: TextareaSize) => {
 
 const StyledTextareaWrapper = styled.div<{
   $error: boolean;
-  $size: TextareaSize;
+  $size: Size;
 }>`
   border: 1px solid
     ${({ theme, $error }) =>
