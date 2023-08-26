@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  swcMinify: true,
   images: {
     // 외부 이미지 테스트를 위해 잠시 삽입
     remotePatterns: [
@@ -9,6 +10,13 @@ const nextConfig = {
         hostname: 'picsum.photos',
       },
     ],
+  },
+
+  // import 모듈화
+  modularizeImports: {
+    lodash: {
+      transform: 'lodash/{{member}}',
+    },
   },
   webpack: (config) => {
     config.module.rules.push({
