@@ -20,6 +20,7 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
    * 넓이
    */
   fullWidth?: boolean;
+  disabled?: boolean;
 }
 
 const StyledInputBaseRoot = styled.div<{ $error: boolean; $fullWidth: boolean }>`
@@ -62,6 +63,10 @@ const StyledInputBaseRoot = styled.div<{ $error: boolean; $fullWidth: boolean }>
     transition: transform 200ms cubic-bezier(0, 0, 0.2, 1) 0ms;
     pointer-events: none;
   }
+  // disabled
+  &.Gn-disabled::before {
+    border-bottom-style: dotted;
+  }
   // Error
   &.Gn-error::after,
   &.Gn-error::before {
@@ -85,37 +90,48 @@ const StyledInputBaseInput = styled.input`
   &::placeholder {
     color: ${({ theme }) => `rgba(${theme.palette.customColors.main}, 0.32)`};
   }
+  // disabled
+  &.Gn-disabled {
+    opacity: 1;
+    -webkit-text-fill-color: ${({ theme }) => theme.palette.text.disabled};
+  }
 `;
 
 const Input = forwardRef(
   (
-    { inputProps = {}, fullWidth = false, error = false, ...rest }: InputProps,
+    { inputProps = {}, fullWidth = false, disabled = false, error = false, ...rest }: InputProps,
     ref: ForwardedRef<HTMLInputElement>
   ) => {
-    const classes = generateClassNames('GnInputBase', [
-      'root',
-      error && 'error',
-      fullWidth && 'fullWidth',
-    ]);
-
     return (
-      <StyledInputBaseRoot className={classes} $fullWidth={fullWidth} $error={error}>
-        <FormControlContext.Consumer>
-          {(value) => (
-            <StyledInputBaseInput
-              ref={ref}
-              type="text"
-              className="GnInputBase-input"
-              onFocus={value?.onFocus}
-              onBlur={value?.onBlur}
-              onChange={value?.onChange}
-              disabled={value?.disabled}
-              {...inputProps}
-              {...rest}
-            />
-          )}
-        </FormControlContext.Consumer>
-      </StyledInputBaseRoot>
+      <FormControlContext.Consumer>
+        {(value) => {
+          const rootClasses = generateClassNames('GnInputBase', [
+            'root',
+            fullWidth && 'fullWidth',
+            (value?.error || error) && 'error',
+            (value?.disabled || disabled) && 'disabled',
+          ]);
+          const inputClasses = generateClassNames('GnInputBase', [
+            'input',
+            (value?.disabled || disabled) && 'disabled',
+          ]);
+          return (
+            <StyledInputBaseRoot className={rootClasses} $fullWidth={fullWidth} $error={error}>
+              <StyledInputBaseInput
+                ref={ref}
+                type="text"
+                className={inputClasses}
+                onFocus={value?.onFocus}
+                onBlur={value?.onBlur}
+                onChange={value?.onChange}
+                disabled={value?.disabled ?? disabled}
+                {...rest}
+                {...inputProps}
+              />
+            </StyledInputBaseRoot>
+          );
+        }}
+      </FormControlContext.Consumer>
     );
   }
 );

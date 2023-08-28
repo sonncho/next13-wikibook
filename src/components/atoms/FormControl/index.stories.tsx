@@ -18,9 +18,9 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Basic: Story = {
-  // parameters: {
-  //   layout: 'centered',
-  // },
+  parameters: {
+    // layout: 'centered',
+  },
   render: (args) => {
     return (
       <FormControl {...args}>

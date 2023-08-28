@@ -5,13 +5,36 @@ import { capitalize, generateClassNames } from '~/utils/filters';
 import FormControlContext from './FormControlContext';
 
 interface FormControlProps {
+  /**
+   * 구성요소 컨텐츠
+   */
   children?: ReactNode;
+  /**
+   * 변형된 스타일
+   */
   variant?: Variant;
+  /**
+   * true이면 label,input,helper text가 disabled상태로 표시
+   */
   disabled?: boolean;
+  /**
+   * true이면 에러 상태로 표시
+   */
   error?: boolean;
+  /**
+   * true이면 컴포넌트가 focused상태로 표시
+   */
   focused?: boolean;
+  /**
+   * true이면 input값이 필수인것을 나타내는 레이블에 aterisk 표시
+   */
   required?: boolean;
   filled?: boolean;
+  /**
+   * input값 변경 이벤트
+   * @param e
+   * @returns
+   */
   onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 

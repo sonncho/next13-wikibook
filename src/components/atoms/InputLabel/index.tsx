@@ -44,14 +44,19 @@ const StyledLabelRoot = styled.label<{ $color: ColorKeys; $focused: boolean }>`
   &.Gn-focused {
     color: ${({ theme, $color }) => theme.palette[$color].main};
   }
+  &.Gn-error {
+    color: ${({ theme }) => theme.palette.error.main};
+  }
 `;
 
 const InputLabel = ({ children, color = 'primary', ...rest }: InputLabelProps) => {
-  const { focused, required } = useFormControl();
+  const { focused, required, error } = useFormControl();
+
   const classes = generateClassNames('GnInputLabel', [
     focused && 'focused',
     color && `${color}`,
     required && 'required',
+    error && 'error',
   ]);
   return (
     <StyledLabelRoot className={classes} $color={color} $focused={focused} {...rest}>
