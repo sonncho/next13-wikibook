@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { LabelSize, Variant } from '~/types';
 import { ColorKeys } from '~/types/theme';
 import { generateClassNames } from '~/utils/filters';
+import useFormControl from '../FormControl/useFormControl';
 
 interface InputLabelProps extends HTMLAttributes<HTMLLabelElement> {
   children: ReactNode;
@@ -27,6 +28,8 @@ const StyledLabelRoot = styled.label<{ $color: ColorKeys }>`
   white-space: nowrap;
   text-overflow: ellipsis;
   display: block;
+
+  //- focus되잇거나 value가 있는 경우
   position: absolute;
   left: 0;
   top: 0;
@@ -36,12 +39,15 @@ const StyledLabelRoot = styled.label<{ $color: ColorKeys }>`
     color 200ms cubic-bezier(0, 0, 0.2, 1) 0ms,
     transform 200ms cubic-bezier(0, 0, 0.2, 1) 0ms,
     max-width 200ms cubic-bezier(0, 0, 0.2, 1) 0ms;
+  // ------------
+
   &.Gn-focused {
     color: ${({ theme, $color }) => theme.palette[$color].main};
   }
 `;
 
-const InputLabel = ({ children, focused = false, color = 'primary', ...rest }: InputLabelProps) => {
+const InputLabel = ({ children, color = 'primary', ...rest }: InputLabelProps) => {
+  const { focused } = useFormControl();
   const classes = generateClassNames('GnInputLabel', [focused && 'focused', color && `${color}`]);
   return (
     <StyledLabelRoot className={classes} $color={color} {...rest}>
