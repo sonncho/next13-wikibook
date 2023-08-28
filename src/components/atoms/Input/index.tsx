@@ -1,7 +1,9 @@
 'use client';
 
-import { InputHTMLAttributes } from 'react';
+import { ForwardedRef, HTMLAttributes, InputHTMLAttributes, Ref, forwardRef } from 'react';
 import styled from 'styled-components';
+import { generateClassNames } from '~/utils/filters';
+import useFormControl from '../FormControl/useFormControl';
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   /**
@@ -25,6 +27,9 @@ const StyledInputBaseRoot = styled.div<{ $error: boolean; $fullWidth: boolean }>
   display: inline-flex;
   align-items: center;
   position: relative;
+  label + & {
+    margin-top: 16px;
+  }
   width: ${({ $fullWidth }) => $fullWidth && '100%'};
   &::before {
     border-bottom: 1px solid ${({ theme }) => `rgba(${theme.palette.customColors.main}, 0.22)`};
@@ -75,18 +80,33 @@ const StyledInputBaseInput = styled.input`
   }
 `;
 
-const Input = ({ inputProps = {}, fullWidth = false, error = false, ...rest }: InputProps) => {
-  return (
-    <StyledInputBaseRoot
-      className={`GnInputBase-root ${error ? 'Gn-error' : ''} ${
-        fullWidth ? 'GnInputBase-fullWidth' : ''
-      }`}
-      $fullWidth={fullWidth}
-      $error={error}
-    >
-      <StyledInputBaseInput className="GnInputBase-input" {...inputProps} {...rest} />
-    </StyledInputBaseRoot>
-  );
-};
+const Input = forwardRef(
+  (
+    { inputProps = {}, fullWidth = false, error = false, ...rest }: InputProps,
+    ref: ForwardedRef<HTMLInputElement>
+  ) => {
+    const { disabled = undefined, onFocus, onBlur } = useFormControl();
+    const classes = generateClassNames('GnInputBase', [
+      'root',
+      error && 'error',
+      fullWidth && 'fullWidth',
+    ]);
+
+    return (
+      <StyledInputBaseRoot className={classes} $fullWidth={fullWidth} $error={error}>
+        <StyledInputBaseInput
+          ref={ref}
+          type="text"
+          className="GnInputBase-input"
+          onFocus={onFocus}
+          onBlur={onBlur}
+          disabled={disabled}
+          {...inputProps}
+          {...rest}
+        />
+      </StyledInputBaseRoot>
+    );
+  }
+);
 
 export default Input;
