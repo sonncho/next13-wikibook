@@ -6,7 +6,10 @@ interface FormControlContextValue {
   focused: boolean;
   filled: boolean;
   onBlur: () => void;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onFocus: () => void;
+  required: boolean;
+  value: string;
 }
 
 const FormControlContext = createContext<FormControlContextValue | undefined>(undefined);

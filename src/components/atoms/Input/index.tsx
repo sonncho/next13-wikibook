@@ -4,6 +4,7 @@ import { ForwardedRef, HTMLAttributes, InputHTMLAttributes, Ref, forwardRef } fr
 import styled from 'styled-components';
 import { generateClassNames } from '~/utils/filters';
 import useFormControl from '../FormControl/useFormControl';
+import FormControlContext from '../FormControl/FormControlContext';
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   /**
@@ -11,7 +12,13 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
    */
   // input기본 props를 한꺼번에 넣을수 있도록 따로 추가
   inputProps?: InputHTMLAttributes<HTMLInputElement>;
+  /**
+   * 에러 여부
+   */
   error?: boolean;
+  /**
+   * 넓이
+   */
   fullWidth?: boolean;
 }
 
@@ -85,7 +92,6 @@ const Input = forwardRef(
     { inputProps = {}, fullWidth = false, error = false, ...rest }: InputProps,
     ref: ForwardedRef<HTMLInputElement>
   ) => {
-    const { disabled = undefined, onFocus, onBlur } = useFormControl();
     const classes = generateClassNames('GnInputBase', [
       'root',
       error && 'error',
@@ -94,16 +100,21 @@ const Input = forwardRef(
 
     return (
       <StyledInputBaseRoot className={classes} $fullWidth={fullWidth} $error={error}>
-        <StyledInputBaseInput
-          ref={ref}
-          type="text"
-          className="GnInputBase-input"
-          onFocus={onFocus}
-          onBlur={onBlur}
-          disabled={disabled}
-          {...inputProps}
-          {...rest}
-        />
+        <FormControlContext.Consumer>
+          {(value) => (
+            <StyledInputBaseInput
+              ref={ref}
+              type="text"
+              className="GnInputBase-input"
+              onFocus={value?.onFocus}
+              onBlur={value?.onBlur}
+              onChange={value?.onChange}
+              disabled={value?.disabled}
+              {...inputProps}
+              {...rest}
+            />
+          )}
+        </FormControlContext.Consumer>
       </StyledInputBaseRoot>
     );
   }

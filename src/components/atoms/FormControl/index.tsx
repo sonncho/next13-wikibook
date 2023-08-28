@@ -1,4 +1,4 @@
-import React, { ReactNode, useState } from 'react';
+import React, { ChangeEvent, EventHandler, ReactNode, useState } from 'react';
 import styled from 'styled-components';
 import { Variant } from '~/types';
 import { capitalize, generateClassNames } from '~/utils/filters';
@@ -12,6 +12,7 @@ interface FormControlProps {
   focused?: boolean;
   required?: boolean;
   filled?: boolean;
+  onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
 const StyledFormControl = styled.div<{ $variant: Variant }>`
@@ -32,9 +33,12 @@ const FormControl = ({
   error = false,
   required = false,
   filled = false,
+  onChange,
 }: FormControlProps) => {
-  const [focusedState, setFocusedState] = useState(false);
+  const [focusedState, setFocusedState] = useState<boolean>(false);
+  const [value, setValue] = useState<string>('');
   const focused = focusedState && !disabled;
+  React.useEffect(() => setFocusedState((isFocused) => (disabled ? false : isFocused)), [disabled]);
 
   const classes = generateClassNames('GnFormControl', [
     'root',
@@ -51,11 +55,17 @@ const FormControl = ({
       onBlur: () => {
         setFocusedState(false);
       },
+      onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
+        setValue(e.target.value);
+        onChange === null || onChange === undefined ? void 0 : onChange(e);
+      },
       onFocus: () => {
         setFocusedState(true);
       },
+      required,
+      value: value !== null ? value : '',
     };
-  }, [disabled, error, focused, filled]);
+  }, [disabled, error, focused, filled, onChange, setValue, value, required]);
 
   return (
     <FormControlContext.Provider value={childContext}>

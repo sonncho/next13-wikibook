@@ -17,7 +17,7 @@ interface InputLabelProps extends HTMLAttributes<HTMLLabelElement> {
   variant?: Variant;
 }
 
-const StyledLabelRoot = styled.label<{ $color: ColorKeys }>`
+const StyledLabelRoot = styled.label<{ $color: ColorKeys; $focused: boolean }>`
   color: ${({ theme }) => theme.palette.text.secondary};
   font-family: ${({ theme }) => theme.typography.fontFamily};
   font-weight: ${({ theme }) => theme.typography.fontWeightRegular};
@@ -47,11 +47,21 @@ const StyledLabelRoot = styled.label<{ $color: ColorKeys }>`
 `;
 
 const InputLabel = ({ children, color = 'primary', ...rest }: InputLabelProps) => {
-  const { focused } = useFormControl();
-  const classes = generateClassNames('GnInputLabel', [focused && 'focused', color && `${color}`]);
+  const { focused, required } = useFormControl();
+  const classes = generateClassNames('GnInputLabel', [
+    focused && 'focused',
+    color && `${color}`,
+    required && 'required',
+  ]);
   return (
-    <StyledLabelRoot className={classes} $color={color} {...rest}>
+    <StyledLabelRoot className={classes} $color={color} $focused={focused} {...rest}>
       {children}
+      {required && (
+        <span className="GnFormLabel-asterisk" aria-hidden="true">
+          {' '}
+          *
+        </span>
+      )}
     </StyledLabelRoot>
   );
 };
