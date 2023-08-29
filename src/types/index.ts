@@ -2,6 +2,14 @@ export type Size = 'small' | 'medium' | 'large';
 export type LabelSize = 'normal' | 'small' | string;
 export type Variant = 'filled' | 'outlined' | 'standard';
 
+export type Vertical = 'bottom' | 'top';
+export type Horizontal = 'left' | 'right';
+
+export interface AnchorOrigin {
+  vertical: Vertical;
+  horizontal: Horizontal;
+}
+
 export type GlobalStateSlot =
   | 'active'
   | 'checked'
@@ -14,6 +22,6 @@ export type GlobalStateSlot =
   | 'focusVisible'
   | 'required'
   | 'selected';
-interface GlobalClassesMapping {
+export interface GlobalClassesMapping {
   [key: string | GlobalStateSlot]: GlobalStateSlot;
 }
