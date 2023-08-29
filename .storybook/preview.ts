@@ -8,9 +8,15 @@ import typography from '../src/@core/themes/typography';
 import '../src/app/globals.css';
 import GlobalStyles from '../src/@core/styles/globalStyles';
 import * as NextImage from 'next/image';
+import React from 'react';
 
-/* TODO: update import for your custom theme configurations */
-// import { lightTheme, darkTheme } from '../path/to/themes';
+// Allow Storybook to handle Next's <Image> component
+// const OriginalNextImage = NextImage.default
+
+// Object.defineProperty(NextImage, 'default', {
+//   configurable: true,
+//   value: props => <OriginalNextImage {...props} unoptimized />
+// })
 
 const getTheme = (mode: 'light' | 'dark') => {
   const coreTheme = themeOptions(mode);
