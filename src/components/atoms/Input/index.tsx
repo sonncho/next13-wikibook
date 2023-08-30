@@ -3,8 +3,8 @@
 import { ForwardedRef, HTMLAttributes, InputHTMLAttributes, Ref, forwardRef } from 'react';
 import styled from 'styled-components';
 import { generateClassNames } from '~/utils/filters';
-import useFormControl from '../FormControl/useFormControl';
 import FormControlContext from '../FormControl/FormControlContext';
+import InputBase from '../InputBase';
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   /**
@@ -20,59 +20,11 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
    * 넓이
    */
   fullWidth?: boolean;
+  /**
+   * disabled
+   */
   disabled?: boolean;
 }
-
-const StyledInputBaseRoot = styled.div<{ $error: boolean; $fullWidth: boolean }>`
-  font-family: ${({ theme }) => theme.typography.fontFamily};
-  font-weight: 400;
-  font-size: 1rem;
-  line-height: 1.4375em;
-  letter-spacing: 0.00938em;
-  color: ${({ theme }) => `rgb(${theme.palette.customColors.main})`};
-  box-sizing: border-box;
-  cursor: text;
-  display: inline-flex;
-  align-items: center;
-  position: relative;
-  label + & {
-    margin-top: 16px;
-  }
-  width: ${({ $fullWidth }) => $fullWidth && '100%'};
-  &::before {
-    border-bottom: 1px solid ${({ theme }) => `rgba(${theme.palette.customColors.main}, 0.22)`};
-    left: 0px;
-    bottom: 0px;
-    content: ' ';
-    position: absolute;
-    right: 0px;
-    transition: border-bottom-color 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-    pointer-events: none;
-  }
-  &:focus-within::after {
-    transform: scaleX(1) translateX(0px);
-  }
-  &::after {
-    border-bottom: 2px solid ${({ theme }) => theme.palette.primary.main};
-    left: 0px;
-    bottom: 0px;
-    content: '';
-    position: absolute;
-    right: 0px;
-    transform: scaleX(0);
-    transition: transform 200ms cubic-bezier(0, 0, 0.2, 1) 0ms;
-    pointer-events: none;
-  }
-  // disabled
-  &.Gn-disabled::before {
-    border-bottom-style: dotted;
-  }
-  // Error
-  &.Gn-error::after,
-  &.Gn-error::before {
-    border-color: ${({ theme }) => theme.palette.error.main};
-  }
-`;
 
 const StyledInputBaseInput = styled.input`
   font: inherit;
@@ -116,7 +68,7 @@ const Input = forwardRef(
             (value?.disabled || disabled) && 'disabled',
           ]);
           return (
-            <StyledInputBaseRoot className={rootClasses} $fullWidth={fullWidth} $error={error}>
+            <InputBase fullWidth={fullWidth} error={error} disabled={disabled}>
               <StyledInputBaseInput
                 ref={ref}
                 type="text"
@@ -128,7 +80,7 @@ const Input = forwardRef(
                 {...rest}
                 {...inputProps}
               />
-            </StyledInputBaseRoot>
+            </InputBase>
           );
         }}
       </FormControlContext.Consumer>
