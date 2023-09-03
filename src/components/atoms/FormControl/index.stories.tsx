@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import FormControl from '.';
-import InputLabel from '../InputLabel';
-import Input from '../Input';
 import FormHelperText from '../FormHelperText';
+import Input from '../Input';
+import InputLabel from '../InputLabel';
+import FormControl from '.';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta = {
@@ -24,9 +24,9 @@ export const Basic: Story = {
   render: (args) => {
     return (
       <FormControl {...args}>
-        <InputLabel htmlFor="label">Label</InputLabel>
-        <Input placeholder="hi" />
-        <FormHelperText>Some important helper text</FormHelperText>
+        <InputLabel htmlFor="component-helper">Label</InputLabel>
+        <Input placeholder="hi" id="component-helper" aria-describedby="component-helper-text" />
+        <FormHelperText id="component-helper-text">Some important helper text</FormHelperText>
       </FormControl>
     );
   },
