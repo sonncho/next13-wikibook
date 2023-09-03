@@ -1,9 +1,9 @@
 import React, { HTMLAttributes, ReactNode } from 'react';
 import styled from 'styled-components';
+import useFormControl from '../FormControl/useFormControl';
 import { LabelSize, Variant } from '~/types';
 import { ColorKeys } from '~/types/theme';
 import { generateClassNames } from '~/utils/filters';
-import useFormControl from '../FormControl/useFormControl';
 
 interface InputLabelProps extends HTMLAttributes<HTMLLabelElement> {
   children: ReactNode;

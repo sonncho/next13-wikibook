@@ -1,8 +1,8 @@
-import React, { ChangeEvent, EventHandler, ReactNode, useState } from 'react';
+import React, { ChangeEvent, ReactNode, useState } from 'react';
 import styled from 'styled-components';
+import FormControlContext from './FormControlContext';
 import { Variant } from '~/types';
 import { capitalize, generateClassNames } from '~/utils/filters';
-import FormControlContext from './FormControlContext';
 
 interface FormControlProps {
   /**

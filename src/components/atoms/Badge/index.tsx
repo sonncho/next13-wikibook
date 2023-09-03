@@ -1,10 +1,10 @@
 'use client';
 
 import { ReactNode, useCallback } from 'react';
-import { capitalize, generateClassNames } from '~/utils/filters';
-import { ColorKeys } from '~/types/theme';
 import styled from 'styled-components';
 import { AnchorOrigin } from '~/types';
+import { ColorKeys } from '~/types/theme';
+import { capitalize, generateClassNames } from '~/utils/filters';
 
 type BadgeVariant = 'dot' | 'standard';
 interface BadgeProps {
