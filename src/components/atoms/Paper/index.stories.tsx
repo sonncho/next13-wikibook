@@ -48,3 +48,25 @@ export const Variants: Story = {
     );
   },
 };
+
+const Item = styled(Paper)`
+  padding: 1.2rem;
+  & + & {
+    margin-top: 0.75rem;
+  }
+`;
+
+export const Elevation: Story = {
+  args: {
+    variant: 'elevation',
+  },
+  render: (args) => {
+    return (
+      <Stack $direction={'column'}>
+        {[0, 1, 2, 3, 4, 6, 8, 12, 16, 24].map((elevation) => (
+          <Item key={elevation} elevation={elevation} {...args}>{`elevation=${elevation}`}</Item>
+        ))}
+      </Stack>
+    );
+  },
+};
