@@ -39,6 +39,7 @@ const Stack = (props: StackProps) => {
   return (
     <StyledStack className="GnStack-root" {...rest}>
       {children}
+      {divider}
     </StyledStack>
   );
 };

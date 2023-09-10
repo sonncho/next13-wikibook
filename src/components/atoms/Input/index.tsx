@@ -1,10 +1,10 @@
 'use client';
 
-import { ForwardedRef, HTMLAttributes, InputHTMLAttributes, Ref, forwardRef } from 'react';
+import { ForwardedRef, InputHTMLAttributes, forwardRef } from 'react';
 import styled from 'styled-components';
-import { generateClassNames } from '~/utils/filters';
 import FormControlContext from '../FormControl/FormControlContext';
 import InputBase from '../InputBase';
+import { generateClassNames } from '~/utils/filters';
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   /**
@@ -49,6 +49,7 @@ const StyledInputBaseInput = styled.input`
   }
 `;
 
+// eslint-disable-next-line react/display-name
 const Input = forwardRef(
   (
     { inputProps = {}, fullWidth = false, disabled = false, error = false, ...rest }: InputProps,
@@ -68,7 +69,12 @@ const Input = forwardRef(
             (value?.disabled || disabled) && 'disabled',
           ]);
           return (
-            <InputBase fullWidth={fullWidth} error={error} disabled={disabled}>
+            <InputBase
+              classes={rootClasses}
+              fullWidth={fullWidth}
+              error={error}
+              disabled={disabled}
+            >
               <StyledInputBaseInput
                 ref={ref}
                 type="text"

@@ -7,7 +7,7 @@ interface InputBaseProps {
   error?: boolean;
   fullWidth?: boolean;
   disabled?: boolean;
-  classes?: (string | boolean)[];
+  classes?: string;
 }
 
 const StyledInputBase = styled.div<{ $fullWidth: boolean }>`
@@ -68,18 +68,17 @@ const InputBase = ({
   error = false,
   fullWidth = false,
   disabled = false,
-  classes = [],
+  classes = '',
 }: InputBaseProps) => {
   const baseClasses = generateClassNames('InputBase', [
     'root',
     error && 'error',
     fullWidth && 'fullWidth',
     disabled && 'disabled',
-    ...classes,
   ]);
 
   return (
-    <StyledInputBase className={baseClasses} $fullWidth={fullWidth}>
+    <StyledInputBase className={`${baseClasses} ${classes}`} $fullWidth={fullWidth}>
       {children}
     </StyledInputBase>
   );
