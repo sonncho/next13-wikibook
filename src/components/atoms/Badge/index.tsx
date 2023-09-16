@@ -126,19 +126,15 @@ const Badge = ({
     `color${capitalize(color)}`,
     `${invisible && 'invisible'}`,
   ]);
-  const svgIconClasses = generateClassNames('GnSvgIcon', ['root']);
 
-  const getContent = useCallback(
-    (badgeContent?: ReactNode, max?: number) => {
-      if (typeof badgeContent === 'number' && max) {
-        if (badgeContent > max) return `${max}+`;
-        else return badgeContent;
-      } else {
-        return badgeContent;
-      }
-    },
-    [badgeContent, max]
-  );
+  const getContent = useCallback((badgeContent?: ReactNode, max?: number) => {
+    if (typeof badgeContent === 'number' && max) {
+      if (badgeContent > max) return `${max}+`;
+      else return badgeContent;
+    } else {
+      return badgeContent;
+    }
+  }, []);
 
   return (
     <StyledBadgeRoot className={rootClasses}>

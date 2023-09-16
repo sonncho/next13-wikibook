@@ -1,4 +1,4 @@
-import React, { ChangeEvent, HTMLAttributes, ReactNode, useState } from 'react';
+import React, { ChangeEvent, HTMLAttributes, ReactNode } from 'react';
 import styled from 'styled-components';
 import Icon from '~/components/atoms/Icon';
 import InputBase from '~/components/atoms/InputBase';
@@ -81,12 +81,13 @@ const StyledPaper = styled(Paper)`
 `;
 
 const Select = ({ children, value, labelId, iconName = 'BsChevronDown', ...rest }: SelectProps) => {
-  const [isOpen, setIsOpen] = useState(false);
+  // const [isOpen, setIsOpen] = useState(false);
+  console.log(labelId);
 
   const selectClasses = generateClassNames('GnSelect', ['select']);
   const iconClasses = generateClassNames('GnSelect', ['icon']);
   return (
-    <InputBase>
+    <InputBase {...rest}>
       <StyledSelect className={selectClasses}>{value}</StyledSelect>
       <StyledNativeInput
         aria-invalid="false"

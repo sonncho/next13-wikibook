@@ -21,6 +21,7 @@ type Story = StoryObj<typeof meta>;
 export const Basic: Story = {
   args: {},
   render: (args) => {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     const [age, setAge] = useState('');
     const handleChange = (e: ChangeEvent<HTMLSelectElement>) => {
       setAge(e.target.value);
@@ -28,7 +29,7 @@ export const Basic: Story = {
     return (
       <FormControl>
         <InputLabel id="demo-simple-select-standard">Age</InputLabel>
-        <Select labelId="demo-simple-select-standard" onChange={handleChange} {...args}>
+        <Select labelId="demo-simple-select-standard" onChange={handleChange} value={age} {...args}>
           <MenuItem value={10}>None</MenuItem>
           <MenuItem value={20}>Ten</MenuItem>
           <MenuItem value={30}>Twenty</MenuItem>

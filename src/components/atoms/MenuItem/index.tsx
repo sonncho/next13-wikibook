@@ -13,8 +13,9 @@ interface MenuItemProps {
 const StyledMenuItem = styled.li``;
 
 const MenuItem = ({ children, value }: MenuItemProps) => {
+  console.log(value);
   const classes = generateClassNames('GnMenuItem', ['root']);
-  return <StyledMenuItem>{children}</StyledMenuItem>;
+  return <StyledMenuItem className={classes}>{children}</StyledMenuItem>;
 };
 
 export default MenuItem;
