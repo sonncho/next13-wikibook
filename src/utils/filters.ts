@@ -1,3 +1,4 @@
+import { ChangeEvent, DragEvent } from 'react';
 import { GlobalClassesMapping } from '~/types';
 
 /**
@@ -77,4 +78,27 @@ export const generateClassNames = (
   }
 
   return output.join(' ');
+};
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const isDragEvt = (value: any): value is DragEvent => {
+  return !!value.dataTrasfer;
+};
+
+export const isInput = (value: EventTarget | null): value is HTMLInputElement => {
+  return value !== null;
+};
+
+/**
+ * 이벤트로부터 입력된 파일 얻기
+ * @param e DragEvent 또는 ChangeEvent
+ * @returns File 배열
+ */
+export const getFilesFromEvent = (e: DragEvent | ChangeEvent): File[] => {
+  if (isDragEvt(e) && e.dataTransfer) {
+    return Array.from(e.dataTransfer.files);
+  } else if (isInput(e.target) && e.target.files) {
+    return Array.from(e.target.files);
+  }
+  return [];
 };
